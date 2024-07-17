@@ -1,5 +1,5 @@
-<nav class="bg-white fixed w-[95%] top-10 z-40 mx-10 shadow-md rounded-lg ">
-    <div class=" max-w-full px-2 sm:px-6 lg:px-2 py-2">
+<nav class="bg-white fixed w-[95%] top-10 z-40 mx-10 shadow-md rounded-lg max-sm:hidden">
+    <div class="max-w-full px-2 sm:px-6 lg:px-2 py-2">
         <div class="flex flex-row h-16 items-center justify-between">
             <div class="relative inset-y-0 left-0  items-center sm:hidden">
                 <!-- Mobile menu button-->
@@ -33,8 +33,7 @@
                         class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('/') ? 'bg-warning text-white' : '' }}">Home</a>
 
                     <a href=""
-                        class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('code_vouchers') ? 'bg-accent text-white' : '' }}">Code
-                        Voucher</a>
+                        class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('code_vouchers') ? 'bg-accent text-white' : '' }}">Struktur</a>
                     <a href=""
                         class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('about') ? 'bg-accent text-white' : '' }}">About</a>
                 </div>
@@ -179,10 +178,10 @@
                             </div>
                         @else
                             <a href="{{ route('register') }}"
-                                class="btn btn-sm hover:scale-90 transition duration-300 font-semibold text-gray-800 px-4 bg-gray-300 hover:bg-green-600 hover:text-gray-900 rounded-2xl text-sm">Sign
+                                class="btn btn-sm hover:scale-90 transition duration-300 font-semibold text-gray-800 px-4 bg-gray-300 hover:bg-warning hover:text-gray-900 rounded-2xl text-sm">Sign
                                 Up</a>
                             <a href="{{ route('login') }}"
-                                class="btn btn-sm hover:scale-90 transition duration-300  font-semibold text-white px-4   bg-black hover:bg-green-600  hover:outline-black hover:text-gray-900 rounded-2xl text-sm">Log
+                                class="btn btn-sm hover:scale-90 transition duration-300  font-semibold text-white px-4   bg-black hover:bg-warning  hover:outline-black hover:text-gray-900 rounded-2xl text-sm">Log
                                 in</a>
 
                         @endauth
@@ -191,20 +190,26 @@
 
             </div>
         </div>
-
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden" id="mobile-menu">
-            <div class="space-y-2 px-2 pb-3 pt-2 hidden" id="mobile-menu-slide">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="/"
-                    class=" text-gray-400 rounded-md px-3 py-2 font-medium block {{ request()->is('/') ? 'bg-green-500 text-white' : '' }}"
-                    aria-current="page"><i class="fa-solid fa-house w-7 "></i> Home</a>
-                <a href="/all_products"
-                    class="text-gray-400 hover:bg-green-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('all_products') ? 'bg-green-600 text-white' : '' }}"><i
-                        class="fa-solid fa-shop w-7"></i> All
-                    Product</a>
-
-
-            </div>
-        </div>
 </nav>
+
+<nav>
+
+</nav>
+
+
+
+{{-- <!-- Mobile menu, show/hide based on menu state. -->
+ <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-2 px-2 pb-3 pt-2 hidden" id="mobile-menu-slide">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="/"
+            class=" text-gray-400 rounded-md px-3 py-2 font-medium block {{ request()->is('/') ? 'bg-green-500 text-white' : '' }}"
+            aria-current="page"><i class="fa-solid fa-house w-7 "></i> Home</a>
+        <a href="/all_products"
+            class="text-gray-400 hover:bg-green-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('all_products') ? 'bg-green-600 text-white' : '' }}"><i
+                class="fa-solid fa-shop w-7"></i> All
+            Product</a>
+
+
+    </div>
+</div> --}}

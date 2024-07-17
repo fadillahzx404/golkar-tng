@@ -5,12 +5,13 @@
 @section('page-content')
     <div class="flex flex-col gap-12 min-h-screen">
 
-        <section class="main-content bg-primary lg:h-[1000px] text-center relative overflow-hidden">
-            <div class="hero pt-44 flex flex-col">
+        <section
+            class="main-content bg-primary lg:h-[1000px] lg:text-center max-sm:text-start max-sm:px-5 relative overflow-hidden">
+            <div class="hero lg:pt-44 max-sm:pt-12 flex flex-col relative z-20">
                 <p class="text-5xl text-black font-extrabold">Real Count Golkar Web Apps</p>
                 <p class="text-xl text-black font-medium">Ikuti terus Real count yang berlangsung.</p>
             </div>
-            <div class="flex justify-evenly py-16">
+            <div class="flex max-sm:flex-col justify-evenly py-16">
                 <div class="relative">
                     <div class="absolute top-5 -right-5 bg-warning w-80 h-full rounded-2xl">
                     </div>
@@ -60,28 +61,28 @@
 
             </div>
             <div class="absolute -top-24 w-28 h-96 bg-warning rotate-45"></div>
-            <div class="absolute -bottom-48 right-12 w-28 h-[600px] bg-warning rounded-md rotate-45"></div>
+            <div class="absolute -bottom-48 right-12 w-28 h-[600px] bg-warning rounded-md rotate-45 max-sm:hidden"></div>
             {{-- RIGHT --}}
-            <div class="absolute top-48 left-24">
+            <div class="absolute top-48 left-24 max-sm:hidden">
                 <img src="{{ asset('images/star.png') }}" class="w-24" alt="">
             </div>
-            <div class="absolute top-96 left-12">
+            <div class="absolute top-96 left-12 max-sm:hidden">
                 <img src="{{ asset('images/star.png') }}" class="w-12" alt="">
             </div>
-            <div class="absolute bottom-48 left-12">
+            <div class="absolute bottom-48 left-12 max-sm:hidden">
                 <img src="{{ asset('images/star.png') }}" class="w-24" alt="">
             </div>
 
             {{-- LEFT --}}
-            <div class="absolute top-48 right-24">
+            <div class="absolute top-48 right-24 max-sm:hidden">
                 <img src="{{ asset('images/star.png') }}" class="w-12" alt="">
             </div>
-            <div class="absolute top-96 right-24">
+            <div class="absolute top-96 right-24 max-sm:hidden">
                 <img src="{{ asset('images/star.png') }}" class="w-24" alt="">
             </div>
         </section>
 
-        <section class="content-2 w-full flex justify-evenly px-8 -mt-28">
+        <section class="content-2 w-full flex max-sm:flex-col justify-evenly px-8 -mt-28">
             <div class="relative">
 
                 <div class="bg-base-100 relative stat shadow-sm shadow-warning rounded-xl w-72 z-30">
@@ -129,7 +130,7 @@
         <section class="content-3 flex flex-col bg-primary mt-16">
             <p class="p-4 -mt-8 w-48 bg-warning mx-8 rounded-md text-xl text-white font-bold">Pilkada</p>
 
-            <div class="flex justify-between px-8 py-8 space-x-8">
+            <div class="flex max-sm:flex-col justify-between px-8 py-8 space-x-8">
                 <div class="card bg-base-100 shadow-md rounded-2xl w-full text-start">
 
                     <div class="card-body">
@@ -170,7 +171,7 @@
         <section class="content-4 flex flex-col bg-primary mt-16">
             <p class="p-4 -mt-8 w-48 bg-warning mx-8 rounded-md text-xl text-end self-end text-white font-bold">Pilgub</p>
 
-            <div class="flex justify-between px-8 py-8 space-x-8">
+            <div class="flex max-sm:flex-col justify-between px-8 py-8 space-x-8">
                 <div class="card bg-base-100 shadow-md rounded-2xl w-full text-start">
 
                     <div class="card-body">

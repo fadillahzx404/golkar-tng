@@ -10,6 +10,7 @@ export default {
         "./storage/framework/views/*.php",
         "./resources/views/welcome.blade.php",
         "./resources/views/auth/*.blade.php",
+        "./resources/views/components/*.blade.php",
     ],
 
     daisyui: {
