@@ -11,13 +11,13 @@
                 <p class="text-5xl text-black font-extrabold">Real Count Golkar Web Apps</p>
                 <p class="text-xl text-black font-medium">Ikuti terus Real count yang berlangsung.</p>
             </div>
-            <div class="flex max-sm:flex-col justify-evenly py-16">
+            <div class="flex max-sm:flex-col justify-center max-sm:space-y-24 lg:justify-evenly py-16">
                 <div class="relative">
-                    <div class="absolute top-5 -right-5 bg-warning w-80 h-full rounded-2xl">
+                    <div class="absolute top-5 lg:-right-5 max-sm:right-2 bg-warning w-80  h-full rounded-2xl">
                     </div>
-                    <div class="card bg-base-100 shadow-md rounded-2xl w-80 text-start">
+                    <div class="card bg-base-100 shadow-md rounded-2xl lg:w-80 max-sm:w-11/12 text-start">
                         <figure>
-                            <img src="{{ asset('images/paslon1.png') }}" class="h-[300px]" alt="Shoes" />
+                            <img src="{{ asset('images/paslon1.png') }}" class="w-80" alt="Shoes" />
                         </figure>
                         <div class="card-body">
                             <div class="flex justify-between">
@@ -36,11 +36,11 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="absolute top-5 -right-5 bg-warning w-80 h-full rounded-2xl">
+                    <div class="absolute top-5 lg:-right-5 max-sm:right-2 bg-warning w-80  h-full rounded-2xl">
                     </div>
-                    <div class="card bg-base-100 shadow-md rounded-2xl w-80 text-start">
+                    <div class="card bg-base-100 shadow-md rounded-2xl lg:w-80 max-sm:w-11/12 text-start">
                         <figure>
-                            <img src="{{ asset('images/paslon2.png') }}" class="h-[300px]" alt="Shoes" />
+                            <img src="{{ asset('images/paslon2.png') }}" class="w-80" alt="Shoes" />
                         </figure>
                         <div class="card-body">
                             <div class="flex justify-between">
@@ -82,46 +82,51 @@
             </div>
         </section>
 
-        <section class="content-2 w-full flex max-sm:flex-col justify-evenly px-8 -mt-28">
-            <div class="relative">
+        <section
+            class="content-2 w-full flex max-sm:flex-col justify-evenly px-8 lg:-mt-28 max-sm:space-y-12 max-sm:items-center">
+            <div class="relative ">
 
-                <div class="bg-base-100 relative stat shadow-sm shadow-warning rounded-xl w-72 z-30">
+                <div
+                    class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title pb-3 text-lg text-black">Kelurahaan</div>
-                    <div class="flex space-x-2">
-                        <div class="stat-value">312</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahaan</div>
+                    <div class="flex space-x-2 ">
+                        <div class="stat-value ">312</div>
                         <div class="place-content-end">Data</div>
                     </div>
 
                 </div>
                 <div class="absolute -top-5 -left-5 w-24 h-24 bg-warning z-10 rounded-md"></div>
             </div>
-            <div class="relative">
+            <div class="relative ">
 
-                <div class="bg-base-100 relative stat shadow-sm shadow-warning rounded-xl w-72 z-30">
+                <div
+                    class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title pb-3 text-lg text-black">Kecamataan</div>
-                    <div class="flex space-x-2">
-                        <div class="stat-value">3,555</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kecamatan</div>
+                    <div class="flex space-x-2 ">
+                        <div class="stat-value ">312</div>
                         <div class="place-content-end">Data</div>
                     </div>
 
                 </div>
                 <div class="absolute -top-5 -left-5 w-24 h-24 bg-warning z-10 rounded-md"></div>
             </div>
-            <div class="relative">
+            <div class="relative ">
 
-                <div class="bg-base-100 relative stat shadow-sm shadow-warning rounded-xl w-72 z-30">
+                <div
+                    class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title pb-3 text-lg text-black">Kota/Kabupaten</div>
-                    <div class="flex space-x-2">
-                        <div class="stat-value">10,345</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kota/Kabupaten</div>
+                    <div class="flex space-x-2 ">
+                        <div class="stat-value ">312</div>
                         <div class="place-content-end">Data</div>
                     </div>
 
                 </div>
                 <div class="absolute -top-5 -left-5 w-24 h-24 bg-warning z-10 rounded-md"></div>
             </div>
+
 
 
 
