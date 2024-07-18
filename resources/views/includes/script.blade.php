@@ -1,11 +1,7 @@
 <script src=" https://kit.fontawesome.com/d3336582c4.js" crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
-
-<script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
@@ -37,13 +33,7 @@
     });
 </script>
 
-<script>
-    $(document).ready(function() {
-        $("#mobile-menu-button").click(function() {
-            $("#mobile-menu-slide").slideToggle("slow", function() {});
-        });
-    });
-</script>
+
 
 
 <script>

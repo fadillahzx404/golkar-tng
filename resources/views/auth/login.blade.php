@@ -15,10 +15,13 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
+            <p class="text-2xl font-semibold">Login</p>
+            <p class="text-gray-600 pt-2">Silahkan masuk untuk melanjutkan.</p>
+            <div class="divider"></div>
             <div>
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                    autofocus autocomplete="username" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                    required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
@@ -27,24 +30,24 @@
                     autocomplete="current-password" />
             </div>
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="py-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+            </div>
+            <div class="flex items-center justify-end">
 
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
+
+                <a href="/register" class="ms-4 btn btn-sm rounded-md">Daftar</a>
+
+                <x-button class="ms-4 bg-warning">
+                    {{ __('Masuk') }}
                 </x-button>
+
             </div>
         </form>
     </x-authentication-card>

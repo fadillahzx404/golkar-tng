@@ -1,10 +1,10 @@
-<nav class="bg-white fixed w-[95%] top-10 z-40 mx-10 shadow-md rounded-lg max-sm:hidden">
+<nav class="bg-white lg:fixed max-sm:sticky lg:w-[95%] lg:top-10 z-40 lg:mx-10 shadow-md lg:rounded-lg ">
     <div class="max-w-full px-2 sm:px-6 lg:px-2 py-2">
-        <div class="flex flex-row h-16 items-center justify-between">
-            <div class="relative inset-y-0 left-0  items-center sm:hidden">
+        <div class="flex flex-row h-16 items-center justify-between max-sm:flex-row-reverse">
+            <div class="relative inset-y-0 left-0  items-center sm:hidden ">
                 <!-- Mobile menu button-->
                 <button type="button" id="mobile-menu-button"
-                    class="relative inline-flex items-center justify-center rounded-md p-2  text-gray-400 hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    class="relative inline-flex items-center justify-center rounded-md p-2  text-gray-400 hover:bg-warning hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="absolute -inset-0.5"></span>
                     <span class="sr-only">Open main menu</span>
@@ -21,14 +21,15 @@
                     </svg>
                 </button>
             </div>
-            <div class="flex flex-1 items-stertch sm:items-stretch justify-between">
-                <div class="flex-shrink-0 self-center">
+
+            <div class="flex flex-1 lg:justify-between">
+                <div class="flex-shrink-0 self-center max-sm:text-end">
                     <a href="/" class="">
                         <img class="w-24 hover:scale-90 transition duration-300 max-sm:pl-3" src="/images/logo.png" />
                     </a>
                 </div>
 
-                <div class="flex gap-3 items-center">
+                <div class="max-sm:hidden flex gap-3 items-center">
                     <a href="/"
                         class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('/') ? 'bg-warning text-white' : '' }}">Home</a>
 
@@ -89,12 +90,12 @@
                             </div>
                         </div>
                     @else
-                        <div class="flex flex-row gap-2 sm:hidden">
+                        <div class="flex flex-row gap-2 max-sm:hidden lg:hidden">
                             <a href="{{ route('login') }}"
                                 class="btn btn-sm transition-all duration-300 hover:scale-90 text-center font-medium text-white  bg-black hover:bg-green-600 hover:outline-1 hover:outline-black hover:text-gray-900 rounded-2xl">Log
                                 in</a>
                             <a href="{{ route('register') }}"
-                                class="btn btn-sm transition-all duration-300 hover:scale-90 text-center font-medium text-gray-800  bg-gray-300 hover:bg-green-600 hover:text-gray-900 rounded-2xl ">Signup</a>
+                                class="btn btn-sm transition-all duration-300 hover:scale-90 text-center font-medium text-gray-800  bg-gray-300 hover:bg-green-600 hover:text-gray-900 rounded-2xl ">Daftar</a>
                         </div>
                     @endauth
                 @endif
@@ -189,27 +190,53 @@
                 </div>
 
             </div>
+
         </div>
-</nav>
 
-<nav>
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-2 px-2 py-3 hidden" id="mobile-menu-slide">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="/"
+                    class=" text-gray-400 rounded-md px-3 py-2 font-medium block {{ request()->is('/') ? 'bg-warning text-white' : '' }}"
+                    aria-current="page"><i class="fa-solid fa-house w-7 "></i> Home</a>
+                <a href="/"
+                    class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('struktur') ? 'bg-warning text-white' : '' }}"><i
+                        class="fa-solid fa-shop w-7"></i> Struktur</a>
+                <a href="/about"
+                    class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about') ? 'bg-warning text-white' : '' }}"><i
+                        class="fa-solid fa-building w-7 pl-1"></i> About</a>
 
-</nav>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="/about"
+                            class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about') ? 'bg-warning text-white' : '' }}"><i
+                                class="fa-solid fa-building w-7 pl-1"></i> Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}"
+                            class="btn btn-sm w-full transition-all duration-300 hover:scale-90 text-center font-medium text-white  bg-black hover:bg-warning hover:outline-1 hover:outline-black hover:text-gray-900 rounded-2xl">Log
+                            in</a>
+                        <a href="{{ route('register') }}"
+                            class="btn btn-sm w-full transition-all duration-300 hover:scale-90 text-center font-medium text-gray-800  bg-gray-300 hover:bg-warning hover:text-gray-900 rounded-2xl ">Daftar</a>
 
+                    @endauth
+                @endif
 
-
-{{-- <!-- Mobile menu, show/hide based on menu state. -->
- <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-2 px-2 pb-3 pt-2 hidden" id="mobile-menu-slide">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/"
-            class=" text-gray-400 rounded-md px-3 py-2 font-medium block {{ request()->is('/') ? 'bg-green-500 text-white' : '' }}"
-            aria-current="page"><i class="fa-solid fa-house w-7 "></i> Home</a>
-        <a href="/all_products"
-            class="text-gray-400 hover:bg-green-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('all_products') ? 'bg-green-600 text-white' : '' }}"><i
-                class="fa-solid fa-shop w-7"></i> All
-            Product</a>
+            </div>
+        </div>
 
 
     </div>
-</div> --}}
+
+</nav>
+
+
+@push('addon-script')
+    <script>
+        $(document).ready(function() {
+            $("#mobile-menu-button").on('click', function() {
+                $("#mobile-menu-slide").slideToggle("slow");
+            });
+        });
+    </script>
+@endpush
