@@ -1,15 +1,17 @@
 <!-- partial:./partials/_sidebar.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
+<nav class="sidebar sidebar-offcanvas h-100" id="sidebar">
+    <ul class="nav position-fixed" id="sidebar-cont">
         <div class="logo">
-            <img src="{{ url('assets/images/logo-golkar.png') }}" alt="logo" width="100%">
+            <a href="/">
+                <img src="{{ url('assets/images/logo-golkar.png') }}" alt="logo" width="100%">
+            </a>
         </div>
         <li class="nav-item sidebar-category">
             <p>Menu</p>
             <span></span>
         </li>
         <li class="nav-item mb-2">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="admin">
                 <i class="mdi mdi-view-quilt menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>

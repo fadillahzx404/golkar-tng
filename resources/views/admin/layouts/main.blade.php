@@ -13,11 +13,25 @@
     <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="images/favicon.png" />
+
+    <style>
+        #sidebar-cont {
+            max-width: 15%;
+            transition: all 0.5s
+        }
+
+        #sidebar-cont.active {
+            max-width: 5%;
+            transition: all 0.5s
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-scroller d-flex">
+    <div class="container-scroller d-flex ">
+
         @include('admin.layouts.sidebar')
+
         <div class="container-fluid page-body-wrapper">
             @include('admin.layouts.header')
 
@@ -27,6 +41,19 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#button-toggle').click(function() {
+
+                $('#sidebar-cont').toggleClass('active', 500, "easeOutSine")
+
+            })
+        })
+    </script>
 
     <!-- base:js -->
     <script src="{{ url('assets/vendors/js/vendor.bundle.base.js') }}"></script>

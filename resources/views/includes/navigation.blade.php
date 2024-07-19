@@ -1,4 +1,4 @@
-<nav class="bg-white lg:fixed max-sm:sticky lg:w-[95%] lg:top-10 z-40 lg:mx-10 shadow-md lg:rounded-lg ">
+<nav class="bg-white fixed max-sm:w-full lg:w-[95%] lg:top-10 z-40 lg:mx-10 shadow-md lg:rounded-lg ">
     <div class="max-w-full px-2 sm:px-6 lg:px-2 py-2">
         <div class="flex flex-row h-16 items-center justify-between max-sm:flex-row-reverse">
             <div class="relative inset-y-0 left-0  items-center sm:hidden ">
@@ -40,26 +40,8 @@
                 </div>
                 @if (Route::has('login'))
                     @auth
-                        <div class="flex flex-row space-x-3 sm:hidden">
-                            <a href="{{ route('carts', Auth::user()->id) }}">
-                                <div
-                                    class="dropdown dropdown-end self-center {{ request()->is('carts*') ? 'bg-accent rounded-full ' : '' }}">
-                                    <label tabindex="0">
+                        <div class="flex flex-row space-x-3 max-sm:hidden lg:hidden">
 
-                                        <div class="indicator">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 {{ request()->is('carts*') ? 'text-white' : '' }}"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                            </svg>
-                                            <span
-                                                class="badge  badge-sm indicator-item {{ request()->is('carts*') ? 'badge-ghost border' : 'badge-accent' }}">{{ Auth::user()->carts->count('product_id') }}</span>
-                                        </div>
-
-                                    </label>
-                                </div>
-                            </a>
                             <div class="border border-grey-900 "></div>
                             <div class="dropdown dropdown-end self-center">
                                 <label tabindex="0"
@@ -70,7 +52,7 @@
                                 </label>
                                 <ul tabindex="0"
                                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 border-2 rounded-box w-40 space-y-1">
-                                    <li><a href="{{ route('dashboard-admin') }}"
+                                    <li><a href=""
                                             class="hover:bg-accent hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
                                     </li>
                                     <li><a href="" class="hover:bg-accent hover:text-white">Profile</a></li>
@@ -104,66 +86,25 @@
                     @if (Route::has('login'))
                         @auth
                             <div class="flex space-x-3">
-                                <a href="{{ route('carts', Auth::user()->id) }}">
-                                    <div
-                                        class="dropdown dropdown-end {{ request()->is('carts*') ? 'bg-accent rounded-full ' : '' }}">
-                                        <label tabindex="0"
-                                            class="btn btn-ghost btn-circle transition duration-300 hover:scale-90 ">
-                                            <div class="indicator">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-5 w-5 {{ request()->is('carts*') ? 'text-white' : '' }}"
-                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                </svg>
-                                                <span
-                                                    class="badge  badge-sm indicator-item {{ request()->is('carts*') ? 'badge-ghost border' : 'badge-accent' }}">{{ Auth::user()->carts->count('product_id') }}</span>
-                                            </div>
-                                        </label>
 
 
-
-                                    </div>
-                                </a>
-                                <a href="{{ route('transactions-history', Auth::user()->id) }}">
-                                    <div
-                                        class="dropdown dropdown-end {{ request()->is('transactions_history*') ? 'bg-accent rounded-full ' : '' }}">
-                                        <label tabindex="0"
-                                            class="btn btn-ghost btn-circle transition duration-300 hover:scale-90 ">
-                                            <div class="indicator">
-                                                <svg class="w-5 h-5 {{ request()->is('transactions_history*') ? 'text-white' : '' }}"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 18 20">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="M12 2h4a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4m6 0a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1m6 0v3H6V2M5 5h8m-8 5h8m-8 4h8" />
-                                                </svg>
-                                                <span
-                                                    class="badge  badge-sm indicator-item {{ request()->is('transactions_history*') ? 'badge-ghost border' : 'badge-accent' }}">{{ Auth::user()->transactions->count('order_id') }}</span>
-                                            </div>
-                                        </label>
-
-
-
-                                    </div>
-                                </a>
                                 <div class="border border-grey-900 "></div>
                                 <div class="dropdown dropdown-end ">
                                     <label tabindex="0"
-                                        class="btn btn-ghost hover:bg-green-500 btn-circle avatar transition duration-300 hover:scale-90">
+                                        class="btn btn-ghost hover:bg-warning btn-circle avatar transition duration-300 hover:scale-90">
                                         <div class="w-9  rounded-full">
                                             <img src="{{ Auth::user()->profile_photo_url }}" />
                                         </div>
                                     </label>
                                     <ul tabindex="0"
                                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40 space-y-1">
-                                        <li><a href="{{ route('dashboard-admin') }}"
-                                                class="hover:bg-accent hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
+                                        <li><a href="/admin"
+                                                class="hover:bg-warning hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
                                         </li>
                                         <li><a href="{{ route('profile.show') }}"
-                                                class="hover:bg-accent hover:text-white">Profile</a></li>
+                                                class="hover:bg-warning hover:text-white">Profile</a></li>
                                         <li>
-                                            <form method="POST" class="hover:bg-accent hover:text-white"
+                                            <form method="POST" class="hover:bg-warning hover:text-white"
                                                 action="{{ route('logout') }}">
                                                 @csrf
 
@@ -209,9 +150,20 @@
 
                 @if (Route::has('login'))
                     @auth
-                        <a href="/about"
+                        <div class="divider"></div>
+                        <a href="/dashboard"
                             class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about') ? 'bg-warning text-white' : '' }}"><i
-                                class="fa-solid fa-building w-7 pl-1"></i> Dashboard</a>
+                                class="fa-solid  fa-table-columns w-7 pl-1"></i> Dashboard</a>
+
+                        <a href="/dashboard"
+                            class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about') ? 'bg-warning text-white' : '' }}"><i
+                                class="fa-solid fa-users-line w-7 pl-1"></i> Input Data Gubernur (Pilgub)</a>
+                        <a href="/dashboard"
+                            class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about') ? 'bg-warning text-white' : '' }}"><i
+                                class="fa-solid fa-people-group w-7 pl-1"></i> Input Data Walikota (Pilkada)</a>
+                        <a href="/dashboard"
+                            class="text-gray-400 hover:bg-warning hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ request()->is('about') ? 'bg-warning text-white' : '' }}"><i
+                                class="fa-solid fa-right-to-bracket w-7 pl-1"></i> Log Out</a>
                     @else
                         <a href="{{ route('login') }}"
                             class="btn btn-sm w-full transition-all duration-300 hover:scale-90 text-center font-medium text-white  bg-black hover:bg-warning hover:outline-1 hover:outline-black hover:text-gray-900 rounded-2xl">Log

@@ -11,6 +11,7 @@ export default {
         "./resources/views/welcome.blade.php",
         "./resources/views/auth/*.blade.php",
         "./resources/views/components/*.blade.php",
+        "./node_modules/flowbite/**/*.js",
     ],
 
     daisyui: {
@@ -51,6 +52,8 @@ export default {
         forms,
         typography,
         require("daisyui"),
-        require("flowbite/plugin"),
+        require("flowbite/plugin")({
+            charts: true,
+        }),
     ],
 };
