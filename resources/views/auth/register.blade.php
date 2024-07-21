@@ -53,9 +53,13 @@
                 <div class="label">
                     <span class="label-text">Kota/Kabupaten</span>
                 </div>
-                <input name="kota" type="text" value="Kota Tangerang"
+                <select class="select select-bordered select-disabled focus:outline-none focus:border-warning"
+                    name="kota" id="kota" required>
+                    <option selected value="3671">Kota Tangerang</option>
+                </select>
+                {{-- <input name="kota" type="text" value="Kota Tangerang"
                     class="input input-disabled font-bold text-black focus:border-warning focus:outline-none w-full"
-                    readonly />
+                    readonly /> --}}
 
             </label>
 
@@ -67,7 +71,7 @@
                     id="kecamatan" required>
                     <option disabled selected value=""> - Pilih Kecamatan - </option>
                     @foreach ($kecamatan as $kc)
-                        <option value="{{ $kc->Id }}">{{ $kc->nama }}</option>
+                        <option value="{{ $kc->kode }}">{{ $kc->nama }}</option>
                     @endforeach
                 </select>
             </label>
@@ -79,11 +83,6 @@
                 <select class="select select-bordered focus:outline-none focus:border-warning" name="kelurahan"
                     id="kelurahan" required>
                     <option disabled selected value="">- Pilih Kelurahan -</option>
-                    <option value="1">Star Wars</option>
-                    <option>Harry Potter</option>
-                    <option>Lord of the Rings</option>
-                    <option>Planet of the Apes</option>
-                    <option>Star Trek</option>
                 </select>
             </label>
 
@@ -91,11 +90,11 @@
                 <div class="label">
                     <span class="label-text">Jenis Saksi</span>
                 </div>
-                <select class="select select-bordered focus:outline-none focus:border-warning" name="kelurahan"
-                    id="kelurahan" required>
+                <select class="select select-bordered focus:outline-none focus:border-warning" name="jenis" id="jenis"
+                    required>
                     <option disabled selected value="">- Pilih Jenis Saksi -</option>
-                    <option value="">Saksi Pilkada</option>
-                    <option value="">Saksi Pilgub</option>
+                    <option value="SAKSI PILKADA">Saksi Pilkada</option>
+                    <option value="SAKSI PILGUB">Saksi Pilgub</option>
 
                 </select>
             </label>
@@ -106,7 +105,7 @@
                 </div>
                 <select class="select select-bordered focus:outline-none focus:border-warning" name="TPS" id="TPS"
                     required>
-                    <option disabled selected value="">- Pilih TPS -</option>
+                    <option disabled selected value=""> - Pilih TPS - </option>
                     @for ($i = 1; $i <= 25; $i++)
                         <option value="TPS {{ $i }}"> TPS {{ $i }}</option>
                     @endfor

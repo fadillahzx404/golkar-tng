@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DataSuaraController;
 use App\Http\Controllers\Admin\DataSaksiController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\AppController;
 // Saksi
 use App\Http\Controllers\Saksi\InputDataPilgubController;
 use App\Http\Controllers\Saksi\InputDataPilkadaController;
@@ -28,6 +29,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('districts', [AppController::class, 'districts'])->name('districts');
+
 Route::resource('/auth-admin-golkar', AuthAdminController::class);
 
 
@@ -48,7 +51,10 @@ Route::prefix('author')
 
         //SAKSI
         Route::resource('/input-data-pilkada', InputDataPilkadaController::class);
+        Route::post('/save-pilkada', [InputDataPilkadaController::class, 'store'])->name('save-pilkada');
         Route::resource('/input-data-pilgub', InputDataPilgubController::class);
+        // Route::post('/save-rekap-pilkada', [InputDataPilkadaController::class, 'store'])->name('save-rekap-pilkada');
+
         //Export Excel
 
 

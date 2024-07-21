@@ -41,7 +41,39 @@
     });
 </script>
 
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('select[name="kecamatan"]').change(function() {
+            onChangeSelect("{{ route('districts') }}", $(this).val(), 'kelurahan')
+        })
+    })
+</script>
 
+<script>
+    function onChangeSelect(url, id, name) {
+        // send ajax request to get the cities of the selected province and append to the select tag
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                $('#' + name).empty();
+                $('#' + name).append('<option> - Pilih Kelurahan - </option>');
+                $.each(data, function(key, value) {
+                    $('#' + name).append('<option value="' + value.kode + '">' + value.nama +
+                        '</option>');
+                });
+            }
+        });
+    }
+</script>
 
 
 <script>

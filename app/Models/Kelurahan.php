@@ -11,7 +11,7 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\District;
+use Laravolt\Indonesia\Models\Kecamatan;
 
 /**
  * Kelurahan Model.
@@ -42,6 +42,6 @@ class Kelurahan extends Model
      */
     public function district()
     {
-        return $this->belongsTo(District::class);
+        return $this->belongsTo(Kecamatan::class);
     }
 }

@@ -59,22 +59,15 @@
 
         @if (AUth::user()->roles == 'ADMIN')
             <section class="content-3 flex flex-col bg-primary ">
-
-
                 <div
                     class="lg:flex max-sm:grid max-sm:px-4 max-sm:space-y-4 justify-between px-8 py-8 lg:space-x-8 max-sm:self-center">
-
-
                     <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-
                         <div class="grid  w-full">
                             <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Perbandingan
                                 Paslon
                                 Lain</h5>
                             <div class="divider "></div>
-
                         </div>
-
                         <!-- Line Chart -->
                         <div class="py-6" id="pie-chart"></div>
 
@@ -211,14 +204,8 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </section>
         @endif
-
-
-
-
     </div>
 @endsection
 

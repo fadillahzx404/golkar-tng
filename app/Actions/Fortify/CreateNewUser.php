@@ -23,10 +23,10 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'nik' => ['required', 'int',  'unique:users'],
             'name' => ['required', 'string', 'max:255'],
-            'kelurahan' => ['required', 'int'],
-            'phone_number' => ['required', 'int'],
+            'phone_number' => ['required', 'string', 'min:10'],
             'kelurahan' => ['required', 'string'],
             'kecamatan' => ['required', 'string'],
+            'TPS' => ['required']
 
         ])->validate();
 
@@ -38,7 +38,8 @@ class CreateNewUser implements CreatesNewUsers
             'kecamatan' => $input['kecamatan'],
             'kelurahan' => $input['kelurahan'],
             'password' => Hash::make($input['password']),
-            'roles' => $input['roles']
+            'roles' => $input['jenis'],
+            'tps' => $input['TPS']
         ]);
     }
 }

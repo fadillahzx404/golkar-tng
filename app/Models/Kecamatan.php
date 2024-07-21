@@ -12,6 +12,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Regency;
 use App\Models\Village;
+use Laravolt\Indonesia\Models\Kelurahan;
 
 /**
  * Kecamatan Model.
@@ -43,6 +44,6 @@ class Kecamatan extends Model
      */
     public function villages()
     {
-        return $this->hasMany(Village::class);
+        return $this->hasMany(Kelurahan::class);
     }
 }
