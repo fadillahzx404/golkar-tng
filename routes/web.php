@@ -1,6 +1,16 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+//Admin
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\QuickCountController;
+use App\Http\Controllers\Admin\DataSuaraController;
+use App\Http\Controllers\Admin\DataSaksiController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\ReportController;
+// Saksi
+use App\Http\Controllers\Saksi\InputDataPilgubController;
+use App\Http\Controllers\Saksi\InputDataPilkadaController;
+use App\Http\Controllers\AuthAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +25,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/admin', [AdminController::class, 'home']);
+Route::resource('/auth-admin-golkar', AuthAdminController::class);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
+Route::prefix('author')
+    ->middleware([
+        'auth:sanctum',
+        config('jetstream.auth_session')
+    ])->group(function () {
+        //ADMIN
+        Route::get('/dashboard', [AdminController::class, 'home'])->name('dashboard');
+        Route::resource('/quick-count', QuickCountController::class);
+        Route::resource('/data-suara', DataSuaraController::class);
+        Route::resource('/data-saksi', DataSaksiController::class);
+        Route::resource('/users', UsersController::class);
+        Route::resource('/report', ReportController::class);
+
+        //SAKSI
+        Route::resource('/input-data-pilkada', InputDataPilkadaController::class);
+        Route::resource('/input-data-pilgub', InputDataPilgubController::class);
+    });

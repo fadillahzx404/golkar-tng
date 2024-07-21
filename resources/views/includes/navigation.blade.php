@@ -32,16 +32,10 @@
                 <div class="max-sm:hidden flex gap-3 items-center">
                     <a href="/"
                         class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('/') ? 'bg-warning text-white' : '' }}">Home</a>
-
-                    <a href=""
-                        class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('code_vouchers') ? 'bg-accent text-white' : '' }}">Struktur</a>
-                    <a href=""
-                        class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('about') ? 'bg-accent text-white' : '' }}">About</a>
                 </div>
                 @if (Route::has('login'))
                     @auth
                         <div class="flex flex-row space-x-3 max-sm:hidden lg:hidden">
-
                             <div class="border border-grey-900 "></div>
                             <div class="dropdown dropdown-end self-center">
                                 <label tabindex="0"
@@ -53,11 +47,11 @@
                                 <ul tabindex="0"
                                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 border-2 rounded-box w-40 space-y-1">
                                     <li><a href=""
-                                            class="hover:bg-accent hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
+                                            class="hover:bg-warning hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
                                     </li>
-                                    <li><a href="" class="hover:bg-accent hover:text-white">Profile</a></li>
+                                    <li><a href="" class="hover:bg-warning hover:text-white">Profile</a></li>
                                     <li>
-                                        <form method="POST" class="hover:bg-accent hover:text-white"
+                                        <form method="POST" class="hover:bg-warning hover:text-white"
                                             action="{{ route('logout') }}">
                                             @csrf
 
@@ -86,8 +80,6 @@
                     @if (Route::has('login'))
                         @auth
                             <div class="flex space-x-3">
-
-
                                 <div class="border border-grey-900 "></div>
                                 <div class="dropdown dropdown-end ">
                                     <label tabindex="0"
@@ -98,7 +90,7 @@
                                     </label>
                                     <ul tabindex="0"
                                         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40 space-y-1">
-                                        <li><a href="/admin"
+                                        <li><a href="/author/dashboard"
                                                 class="hover:bg-warning hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
                                         </li>
                                         <li><a href="{{ route('profile.show') }}"

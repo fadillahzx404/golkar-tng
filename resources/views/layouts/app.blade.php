@@ -1,7 +1,3 @@
-@php
-    use Illuminate\Support\Facades\Vite;
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,23 +20,52 @@
 
 </head>
 
-<body class="antialiased relative bg-gray-100 ">
+<body class="antialiased relative bg-primary ">
+
+    <div class="flex flex-row">
+
+        <div class="drawer sidebar lg:drawer-open">
+            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content flex flex-col ">
+                <!-- Page content here -->
+                <div class="grid">
+
+                    {{-- Navbar --}}
+                    @include('includes.navigation_dashboard')
+
+                    {{-- Page Content --}}
+                    @yield('page-content')
 
 
 
-    <div class="z-0">
-        @include('includes.navigation')
+                </div>
 
-        {{-- Navbar --}}
+            </div>
 
-        {{-- Page Content --}}
-        @yield('page-content')
+            <div class="drawer-side shadow-md">
+                <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
 
-        {{-- Footer --}}
-        @include('includes.footer')
+                <div class="menu p-4 w-80 min-h-full bg-white text-base-content">
+                    <!-- Sidebar content here -->
+                    <div class="logo rounded-full max-sm:pt-12 pb-4 place-content-center place-self-center">
+                        <a href="/auth" class="transition duration-300 hover:scale-90">
+                            <img src="{{ asset('images/logo-golkar.png') }}"
+                                class="w-36 transition duration-300 hover:scale-90" alt="">
+                        </a>
+
+                    </div>
+                    <p class="font-bold py-2 px-2 mb-2">Menu</p>
+
+
+                    @include('includes.sidebar')
+
+                </div>
+
+
+            </div>
+        </div>
+
     </div>
-
-
 
 
     {{-- Script --}}

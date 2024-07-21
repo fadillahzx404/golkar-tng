@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('saksi.layouts.main')
 
 @section('title')
     {{ 'Dashboard - Home' }}

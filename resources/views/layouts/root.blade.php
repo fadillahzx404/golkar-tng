@@ -1,5 +1,5 @@
 @php
-use Illuminate\Support\Facades\Vite;
+    use Illuminate\Support\Facades\Vite;
 @endphp
 
 <!DOCTYPE html>
@@ -27,15 +27,13 @@ use Illuminate\Support\Facades\Vite;
 <body class="antialiased relative">
 
 
+    @include('includes.navigation')
 
-    {{-- Navbar --}}
-    @if (!request()->is('transaction_payment*'))
-        @include('includes.navigation')
-    @endif
+
 
     <div class="min-h-screen">
-    {{-- Page Content --}}
-    @yield('content')
+        {{-- Page Content --}}
+        @yield('page-content')
     </div>
 
     {{-- Footer --}}

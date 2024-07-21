@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.root')
 @section('title')
     Welcome
 @endsection
@@ -94,7 +94,7 @@
                 <div
                     class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahaan</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahan</div>
                     <div class="flex space-x-2 ">
                         <div class="stat-value ">312</div>
                         <div class="lg:place-content-end">Data</div>

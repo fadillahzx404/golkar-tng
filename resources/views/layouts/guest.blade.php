@@ -23,7 +23,7 @@
 <body class="font-sans text-gray-900 antialiased bg-primary min-h-screen">
 
 
-    <div class="relative overflow-hidden px-4 max-sm:py-8 min-h-screen">
+    <div class="relative overflow-hidden px-4 py-8 min-h-screen">
         {{ $slot }}
 
 

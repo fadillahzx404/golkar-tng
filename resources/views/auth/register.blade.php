@@ -11,57 +11,122 @@
 
             <p class="text-2xl font-semibold">Register</p>
             <p class="text-gray-600 pt-2">Silahkan Isilah form berikut ini untuk mendaftar. </p>
+
             <div class="divider"></div>
-            <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
-                    required autofocus autocomplete="name" />
-            </div>
 
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                    required autocomplete="username" />
-            </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                    autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                    name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-label for="terms">
-                        <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
-
-                            <div class="ms-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                    'terms_of_service' =>
-                                        '<a target="_blank" href="' .
-                                        route('terms.show') .
-                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">' .
-                                        __('Terms of Service') .
-                                        '</a>',
-                                    'privacy_policy' =>
-                                        '<a target="_blank" href="' .
-                                        route('policy.show') .
-                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">' .
-                                        __('Privacy Policy') .
-                                        '</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-label>
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">NIK</span>
                 </div>
-            @endif
+                <input name="nik" type="number" placeholder="Masukan NIK anda" :value="old('nik')"
+                    class="input input-bordered focus:border-warning focus:outline-none w-full" required autofocus
+                    autocomplete="nik" />
+
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Nama</span>
+                </div>
+                <input name="name" type="text" placeholder="Masukan nama anda" :value="old('name')"
+                    class="input input-bordered focus:border-warning focus:outline-none w-full" required
+                    autocomplete="name" />
+
+            </label>
+
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Nomor Telepon</span>
+                </div>
+                <input name="phone_number" type="number" placeholder="Masukan nomer telepon"
+                    :value="old('phone_number')"
+                    class="input input-bordered focus:border-warning focus:outline-none w-full" required
+                    autocomplete="phone_number" />
+
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Kota/Kabupaten</span>
+                </div>
+                <input name="kota" type="text" value="Kota Tangerang"
+                    class="input input-disabled font-bold text-black focus:border-warning focus:outline-none w-full"
+                    readonly />
+
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Kecamatan</span>
+                </div>
+                <select class="select select-bordered focus:outline-none focus:border-warning" name="kecamatan"
+                    id="kecamatan" required>
+                    <option disabled selected value=""> - Pilih Kecamatan - </option>
+                    <option value="1">Star Wars</option>
+                    <option>Harry Potter</option>
+                    <option>Lord of the Rings</option>
+                    <option>Planet of the Apes</option>
+                    <option>Star Trek</option>
+                </select>
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Kelurahan</span>
+                </div>
+                <select class="select select-bordered focus:outline-none focus:border-warning" name="kelurahan"
+                    id="kelurahan" required>
+                    <option disabled selected value="">- Pilih Kelurahan -</option>
+                    <option value="1">Star Wars</option>
+                    <option>Harry Potter</option>
+                    <option>Lord of the Rings</option>
+                    <option>Planet of the Apes</option>
+                    <option>Star Trek</option>
+                </select>
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Jenis Saksi</span>
+                </div>
+                <select class="select select-bordered focus:outline-none focus:border-warning" name="kelurahan"
+                    id="kelurahan" required>
+                    <option disabled selected value="">- Pilih Jenis Saksi -</option>
+                    <option value="">Saksi Pilkada</option>
+                    <option value="">Saksi Pilgub</option>
+
+                </select>
+            </label>
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">TPS (Tempat Pemilihan Suara)</span>
+                </div>
+                <select class="select select-bordered focus:outline-none focus:border-warning" name="TPS"
+                    id="TPS" required>
+                    <option disabled selected value="">- Pilih TPS -</option>
+                    @for ($i = 1; $i <= 25; $i++)
+                        <option value="TPS {{ $i }}"> TPS {{ $i }}</option>
+                    @endfor
+
+
+                </select>
+            </label>
+
+
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text">Password</span>
+                </div>
+                <input id="password" name="password" type="password" :value="old('password')"
+                    placeholder="Masukan password anda"
+                    class="input input-bordered focus:border-warning focus:outline-none w-full" required
+                    autocomplete="password" />
+            </label>
+
+
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

@@ -15,15 +15,15 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <p class="text-2xl font-semibold">Login</p>
+            <p class="text-2xl font-semibold">Login Admin Golkar</p>
 
             <p class="text-gray-600 pt-2">Silahkan masuk untuk melanjutkan.</p>
             <div class="divider"></div>
             <label class="form-control w-full">
                 <div class="label">
-                    <span class="label-text">NIK</span>
+                    <span class="label-text">Email</span>
                 </div>
-                <input name="auth" type="text" placeholder="Masukan NIK anda" :value="old('auth')"
+                <input name="auth" type="email" placeholder="Masukan email anda" :value="old('auth')"
                     class="input input-bordered focus:border-warning focus:outline-none w-full" required
                     autocomplete="auth" />
 
@@ -44,7 +44,7 @@
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         href="{{ route('password.request') }}">
-                        {{ __('Lupa Password?') }}
+                        {{ __('Forgot your password?') }}
                     </a>
                 @endif
 
@@ -52,11 +52,10 @@
 
             <div class="flex justify-between items-center">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    href="{{ route('auth-admin-golkar.index') }}">
-                    {{ __('Login as Admin Golkar') }}
+                    href="/login">
+                    {{ __('Login as Saksi') }}
                 </a>
                 <div class="flex items-center">
-                    <a href="/register" class="ms-4 btn btn-sm rounded-md">Daftar</a>
 
                     <x-button class="ms-4 bg-warning">
                         {{ __('Masuk') }}
