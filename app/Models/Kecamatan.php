@@ -25,16 +25,9 @@ class Kecamatan extends Model
      *
      * @var string
      */
-    protected $table = 'Kecamatans';
+    protected $table = 't_kecamatan';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        't_kecamatan'
-    ];
+
 
     /**
      * Kecamatan belongs to Regency.

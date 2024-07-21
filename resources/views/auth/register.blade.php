@@ -66,11 +66,9 @@
                 <select class="select select-bordered focus:outline-none focus:border-warning" name="kecamatan"
                     id="kecamatan" required>
                     <option disabled selected value=""> - Pilih Kecamatan - </option>
-                    <option value="1">Star Wars</option>
-                    <option>Harry Potter</option>
-                    <option>Lord of the Rings</option>
-                    <option>Planet of the Apes</option>
-                    <option>Star Trek</option>
+                    @foreach ($kecamatan as $kc)
+                        <option value="{{ $kc->Id }}">{{ $kc->nama }}</option>
+                    @endforeach
                 </select>
             </label>
 
