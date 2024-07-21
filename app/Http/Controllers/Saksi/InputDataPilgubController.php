@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Saksi;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class InputDataPilgubController extends Controller
 {
@@ -13,7 +16,9 @@ class InputDataPilgubController extends Controller
      */
     public function index()
     {
-        return view('author.saksi.input-data-pilgub.index');
+        $kecamatan = DB::table('t_kecamatan')->where('kode', Auth::user()->kecamatan)->get();
+        $kelurahan = DB::table('t_kelurahan')->where('kode', Auth::user()->kelurahan)->get();
+        return view('author.saksi.input-data-pilgub.index', ['kecamatan' => $kecamatan, 'kelurahan' => $kelurahan, 'tps' => AUTH::user()->tps]);
     }
 
     /**
@@ -29,7 +34,46 @@ class InputDataPilgubController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'kota' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'tps' => 'required',
+            'paslon1' => 'required|numeric',
+            'paslon2' => 'required|numeric',
+            'file' => 'required|mimes:png,jpg,jpeg',
+            'dpt' => 'required|numeric',
+            'sah' => 'required|numeric',
+            'tidak_sah' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors())->with('error', 'Periksa kembali data anda!')->withInput();
+            // return redirect('/author/input-data-pilkada')->with('status', 'Error');
+        }
+
+        $file = $request->file('file');
+
+        $file_name = $file->hashName();
+        $path = 'public/images/pilgub/';
+        $file->move($path, $file_name);
+
+        Rekapitulasi::create([
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kelurahan' => $request->kelurahan,
+            'tps' => $request->tps,
+            'paslon1' => $request->paslon1,
+            'paslon2' => $request->paslon2,
+            'dokumen' => $path . $file_name,
+            'dpt' => $request->dpt,
+            'sah' => $request->sah,
+            'tidak-sah' => $request->tidak_sah,
+            'jenis' => 'pilgub',
+            'user' => Auth::user()->nik
+        ]);
+
+        return redirect('author/input-data-pilgub')->with('success', 'Rekapitulasi berhasil ditambahkan!');
     }
 
     /**

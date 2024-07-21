@@ -53,7 +53,7 @@ Route::prefix('author')
         Route::resource('/input-data-pilkada', InputDataPilkadaController::class);
         Route::post('/save-pilkada', [InputDataPilkadaController::class, 'store'])->name('save-pilkada');
         Route::resource('/input-data-pilgub', InputDataPilgubController::class);
-        // Route::post('/save-rekap-pilkada', [InputDataPilkadaController::class, 'store'])->name('save-rekap-pilkada');
+        Route::post('/save-pilgub', [InputDataPilgubController::class, 'store'])->name('save-pilgub');
 
         //Export Excel
 
