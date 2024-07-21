@@ -31,10 +31,11 @@ class JetstreamServiceProvider extends ServiceProvider
 
 
             $user = User::where('email', $request->auth)->orWhere('nik', $request->auth)->first();
+            $pass = User::where('password', $request->password)->first();
 
             if (
                 $user &&
-                Hash::check($request->password, $user->password)
+                $pass
             ) {
                 return $user;
             }

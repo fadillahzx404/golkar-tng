@@ -31,6 +31,7 @@ Route::get('/', function () {
 Route::resource('/auth-admin-golkar', AuthAdminController::class);
 
 
+
 Route::prefix('author')
     ->middleware([
         'auth:sanctum',
@@ -44,10 +45,10 @@ Route::prefix('author')
         Route::resource('/users', UsersController::class);
         Route::resource('/report', ReportController::class);
 
+
         //SAKSI
         Route::resource('/input-data-pilkada', InputDataPilkadaController::class);
         Route::resource('/input-data-pilgub', InputDataPilgubController::class);
-
         //Export Excel
 
 
