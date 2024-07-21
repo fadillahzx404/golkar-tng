@@ -24,7 +24,7 @@
 
 
     <div class="relative overflow-hidden px-4 py-8 min-h-screen">
-        {{ $slot }}
+        @yield('page-content')
 
 
 

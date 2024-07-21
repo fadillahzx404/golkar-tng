@@ -1,4 +1,7 @@
-<x-guest-layout>
+@extends('layouts.guest')
+
+
+@section('page-content')
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
@@ -40,8 +43,7 @@
                 <div class="label">
                     <span class="label-text">Nomor Telepon</span>
                 </div>
-                <input name="phone_number" type="number" placeholder="Masukan nomer telepon"
-                    :value="old('phone_number')"
+                <input name="phone_number" type="number" placeholder="Masukan nomer telepon" :value="old('phone_number')"
                     class="input input-bordered focus:border-warning focus:outline-none w-full" required
                     autocomplete="phone_number" />
 
@@ -104,8 +106,8 @@
                 <div class="label">
                     <span class="label-text">TPS (Tempat Pemilihan Suara)</span>
                 </div>
-                <select class="select select-bordered focus:outline-none focus:border-warning" name="TPS"
-                    id="TPS" required>
+                <select class="select select-bordered focus:outline-none focus:border-warning" name="TPS" id="TPS"
+                    required>
                     <option disabled selected value="">- Pilih TPS -</option>
                     @for ($i = 1; $i <= 25; $i++)
                         <option value="TPS {{ $i }}"> TPS {{ $i }}</option>
@@ -140,4 +142,4 @@
             </div>
         </form>
     </x-authentication-card>
-</x-guest-layout>
+@endsection

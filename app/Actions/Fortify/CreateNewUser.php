@@ -38,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
             'kecamatan' => $input['kecamatan'],
             'kelurahan' => $input['kelurahan'],
             'password' => Hash::make($input['password']),
-            'roles' => 'SAKSI',
+            'roles' => $input['roles']
         ]);
     }
 }
