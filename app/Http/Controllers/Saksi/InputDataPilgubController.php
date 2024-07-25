@@ -59,6 +59,7 @@ class InputDataPilgubController extends Controller
         $path = 'public/images/pilgub/';
         $file->move($path, $file_name);
 
+
         Rekapitulasi::create([
             'kota' => $request->kota,
             'kecamatan' => $request->kecamatan,

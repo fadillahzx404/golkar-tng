@@ -7,6 +7,7 @@
 @section('page-content')
     <div class="container lg:px-12  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full overflow-hidden">
         <p class="text-center text-black w-full pb-8 font-bold text-4xl animate-bounce">Welcome {{ Auth::user()->name }}</p>
+
         @if (AUth::user()->roles == 'ADMIN')
             <section
                 class="max-sm:hidden content-1 w-full flex max-sm:flex-col justify-evenly  max-sm:space-y-12 max-sm:items-center">
@@ -59,7 +60,7 @@
             </section>
 
             <section class="section lg:pt-8">
-                <div class="flash-data" data-flash="{!! \Session::get('Success') !!}"></div>
+
 
                 <div class="relative overflow-x-auto shadow-lg borde bg-white border-gray-200 sm:rounded-lg p-5">
                     <div class="title-table grid">
@@ -131,20 +132,43 @@
                                     <td scope="row" class="py-4 text-center">{{ $uR->kecRelation->nama }}</td>
                                     <td scope="row" class="py-4 text-center">
 
-                                        <!-- You can open the modal using ID.showModal() method -->
-                                        <button class="btn btn-sm btn-warning" onclick="my_modal_3.showModal()">open
-                                            modal</button>
-                                        <dialog id="my_modal_3" class="modal">
-                                            <div class="modal-box w-11/12 max-w-5xl">
-                                                <form method="dialog">
-                                                    <button
-                                                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                                </form>
-                                                <h3 class="text-lg font-bold">Photo C1</h3>
-                                                <img src="{{ asset("$uR->dokumen") }}" class=" border-2 rounded-xl"
-                                                    alt="">
+                                        <!-- Modal toggle -->
+                                        <a data-modal-target="default-modal-{{ $uR->Id }}"
+                                            data-modal-toggle="default-modal-{{ $uR->Id }}"
+                                            class=" text-black bg-warning hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            type="button">
+                                            Toggle modal
+                                        </a>
+
+                                        <!-- Main modal -->
+                                        <div id="default-modal-{{ $uR->Id }}" tabindex="-1" aria-hidden="true"
+                                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative p-4 w-full max-w-5xl max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div
+                                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            C1 Photo
+                                                        </h3>
+                                                        <button type="button"
+                                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                            data-modal-hide="default-modal-{{ $uR->Id }}">
+                                                            X
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="p-4 md:p-5 space-y-4">
+                                                        <img src="{{ asset("$uR->dokumen") }}" class=" border-2 rounded-xl"
+                                                            alt="">
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                        </dialog>
+                                        </div>
+
 
 
                                     </td>
@@ -180,7 +204,7 @@
                 </div>
             </section>
         @else
-            <section class="table-reviews bg-white rounded-lg w-full">
+            <section class="table-reviews bg-white rounded-lg w-full mb-4">
                 <div class="relative overflow-x-auto shadow-lg border-b border-gray-200 rounded-lg p-5">
                     <div class="pb-4 bg-white dark:bg-gray-900">
                         <label for="table-search" class="sr-only">Search</label>
@@ -235,20 +259,45 @@
                                     <td scope="row" class="py-4 text-center">{{ $uR->kecRelation->nama }}</td>
                                     <td scope="row" class="py-4 text-center">
 
-                                        <!-- You can open the modal using ID.showModal() method -->
-                                        <button class="btn btn-sm btn-warning" onclick="my_modal_3.showModal()">open
-                                            modal</button>
-                                        <dialog id="my_modal_3" class="modal">
-                                            <div class="modal-box w-11/12 max-w-5xl">
-                                                <form method="dialog">
-                                                    <button
-                                                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                                </form>
-                                                <h3 class="text-lg font-bold">Photo C1</h3>
-                                                <img src="{{ asset("$uR->dokumen") }}" class=" border-2 rounded-xl"
-                                                    alt="">
+
+
+                                        <!-- Modal toggle -->
+                                        <a data-modal-target="default-modal-{{ $uR->Id }}"
+                                            data-modal-toggle="default-modal-{{ $uR->Id }}"
+                                            class=" text-black bg-warning hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            type="button">
+                                            Toggle modal
+                                        </a>
+
+                                        <!-- Main modal -->
+                                        <div id="default-modal-{{ $uR->Id }}" tabindex="-1" aria-hidden="true"
+                                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                            <div class="relative p-4 w-full max-w-5xl max-h-full">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                    <!-- Modal header -->
+                                                    <div
+                                                        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            C1 Photo
+                                                        </h3>
+                                                        <button type="button"
+                                                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                            data-modal-hide="default-modal-{{ $uR->Id }}">
+                                                            X
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="p-4 md:p-5 space-y-4">
+                                                        <img src="{{ asset("$uR->dokumen") }}"
+                                                            class=" border-2 rounded-xl" alt="">
+                                                    </div>
+
+                                                </div>
                                             </div>
-                                        </dialog>
+                                        </div>
+
 
 
                                     </td>

@@ -34,10 +34,10 @@ class CreateNewUser implements CreatesNewUsers
             'nik' => $input['nik'],
             'name' => $input['name'],
             'phone_number' => $input['phone_number'],
-            'kota' => $input['kota'],
+            'kota' => '3671',
             'kecamatan' => $input['kecamatan'],
             'kelurahan' => $input['kelurahan'],
-            'password' => Hash::make($input['password']),
+            'password' => $input['password'],
             'roles' => $input['jenis'],
             'tps' => $input['TPS']
         ]);
