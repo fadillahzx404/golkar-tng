@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('title')
+    Register
+@endsection
 
 
 @section('page-content')
@@ -53,9 +56,10 @@
                 <div class="label">
                     <span class="label-text">Kota/Kabupaten</span>
                 </div>
-                <select class="select select-bordered select-disabled focus:outline-none focus:border-warning"
+                <select
+                    class="select select-bordered select-disabled focus:outline-none focus:border-warning font-bold text-black"
                     name="kota" id="kota" required>
-                    <option selected value="3671">Kota Tangerang</option>
+                    <option selected disabled value="3671">Kota Tangerang</option>
                 </select>
                 {{-- <input name="kota" type="text" value="Kota Tangerang"
                     class="input input-disabled font-bold text-black focus:border-warning focus:outline-none w-full"
@@ -106,11 +110,6 @@
                 <select class="select select-bordered focus:outline-none focus:border-warning" name="TPS" id="TPS"
                     required>
                     <option disabled selected value=""> - Pilih TPS - </option>
-                    @for ($i = 1; $i <= 25; $i++)
-                        <option value="TPS {{ $i }}"> TPS {{ $i }}</option>
-                    @endfor
-
-
                 </select>
             </label>
 

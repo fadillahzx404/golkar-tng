@@ -25,13 +25,15 @@
             <div class="flex flex-1 lg:justify-between">
                 <div class="flex-shrink-0 self-center max-sm:text-end">
                     <a href="/" class="">
-                        <img class="w-24 hover:scale-90 transition duration-300 max-sm:pl-3" src="/images/logo.png" />
+                        <img class="w-20 hover:scale-90 transition duration-300 max-sm:pl-3"
+                            src="/images/logo-golkar.png" />
                     </a>
                 </div>
 
                 <div class="max-sm:hidden flex gap-3 items-center">
                     <a href="/"
                         class="btn btn-sm btn-ghost transition-all duration-300 hover:scale-90 {{ Request::is('/') ? 'bg-warning text-white' : '' }}">Home</a>
+
                 </div>
                 @if (Route::has('login'))
                     @auth
@@ -49,7 +51,7 @@
                                     <li><a href=""
                                             class="hover:bg-warning hover:text-white {{ AUTH::user()->roles == 'USER' ? 'hidden' : 'block' }}">Dashboard</a>
                                     </li>
-                                    <li><a href="" class="hover:bg-warning hover:text-white">Profile</a></li>
+
                                     <li>
                                         <form method="POST" class="hover:bg-warning hover:text-white"
                                             action="{{ route('logout') }}">

@@ -12,7 +12,9 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\Saksi\InputDataPilgubController;
 use App\Http\Controllers\Saksi\InputDataPilkadaController;
 use App\Http\Controllers\AuthAdminController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::get('districts', [AppController::class, 'districts'])->name('districts');
@@ -41,7 +43,8 @@ Route::prefix('author')
         config('jetstream.auth_session')
     ])->group(function () {
         //ADMIN
-        Route::get('/dashboard', [AdminController::class, 'home'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard/input-saksi/{id}', [DashboardController::class, 'show'])->name('show-input-saksi');
         Route::resource('/quick-count', QuickCountController::class);
         Route::resource('/data-suara', DataSuaraController::class);
         Route::resource('/data-saksi', DataSaksiController::class);

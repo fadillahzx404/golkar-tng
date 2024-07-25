@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-content')
-    <div class="container lg:px-12 pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen">
+    <div class="container lg:px-12  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full overflow-hidden">
 
         <div class="flash-data" data-flash="{!! \Session::get('Success') !!}"></div>
         <p class="text-3xl font-bold underline underline-offset-8">Data Saksi</p>
@@ -42,54 +42,77 @@
                             placeholder="Search for items">
                     </div>
                 </div>
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 datatable display" id="datatable">
-                    <thead class="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive nowrap"
+                    width="100%" id="datatable">
+                    <thead class="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400 w-full">
                         <tr>
-                            <th scope="col" class="p-4">
+                            <th scope="col" class="py-4 w-4 " style="text-align: center">
                                 No
                             </th>
-                            <th scope="col" class="p-4 text-center">
-                                Jenis
+                            <th scope="col" class="py-4 " style="text-align: center">
+                                Nama Saksi
                             </th>
-                            <th scope="col" class="p-4 text-center">
-                                Total
+                            <th scope="col" class="py-4 " style="text-align: center">
+                                TPS
                             </th>
-                            <th scope="col" class="p-4 text-center">
+                            <th scope="col" class="py-4 " style="text-align: center">
+                                Kelurahan
+                            </th>
+                            <th scope="col" class="py-4 " style="text-align: center">
+                                Kecamatan
+                            </th>
+
+                            <th scope="col" class="py-4 " style="text-align: center">
+                                Photo
+                            </th>
+                            <th scope="col" class="py-4 " style="text-align: center">
                                 Status
                             </th>
-                            <th scope="col" class="p-4 text-end">
+                            <th scope="col" class="py-4 " style="text-align: end">
                                 Action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        <tr>
-                            <td class="max-w-4 p-4 text-center">1</td>
-                            <td class="py-4">Pilkada</td>
-                            <td class="py-4 text-center">234</td>
-                            <td class="py-4 text-center">
-                                <div class="badge badge-accent">accent</div>
-                            </td>
-                            <td class="p-4 text-end">
+                        @foreach ($datas as $data)
+                            <tr>
+                                <td class="w-4 py-4 text-center"> {{ $loop->iteration }}</td>
+                                <th scope="row" class="py-4 text-center">{{ $data->user }}</th>
+                                <th scope="row" class="py-4 text-center">TPS {{ $data->tps }}</th>
+                                <td scope="row" class="py-4 text-center">{{ $data->kelRelation->nama }}</td>
+                                <td scope="row" class="py-4 text-center">{{ $data->kecRelation->nama }}</td>
+                                <td scope="row" class="py-4 text-center">
 
-                                <div class="flex gap-2 justify-end">
-                                    <a href=""
-                                        class="bg-orange-200 hover:bg-orange-400 p-3 rounded-md hover:text-white tooltip"
-                                        data-tip="Edit"><span><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <form action=""
-                                        class="bg-red-200 hover:bg-red-500 p-3 rounded-md hover:text-white tooltip"
-                                        data-tip="Delete" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"><i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <!-- You can open the modal using ID.showModal() method -->
+                                    <button class="btn btn-sm btn-warning" onclick="my_modal_3.showModal()">open
+                                        modal</button>
+                                    <dialog id="my_modal_3" class="modal">
+                                        <div class="modal-box w-11/12 max-w-5xl">
+                                            <form method="dialog">
+                                                <button
+                                                    class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                            </form>
+                                            <h3 class="text-lg font-bold">Photo C1</h3>
+                                            <img src="{{ asset("$data->dokumen") }}" class=" border-2 rounded-xl"
+                                                alt="">
+                                        </div>
+                                    </dialog>
 
-                                </div>
 
-                            </td>
-                        </tr>
+                                </td>
+                                <td scope="row" class="py-4 text-center">
+                                    <div class="badge bg-orange-400 p-3">{{ Str::upper($data->status) }}</div>
+                                </td>
+                                <td scope="row" class="p-4  text-end min-w-44">
+                                    <a href="{{ route('data-saksi.edit', $data->Id) }}"
+                                        class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg"
+                                        data-tip="Edit"> Detail<span></a>
+
+
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -1,5 +1,7 @@
 @extends('layouts.guest')
-
+@section('title')
+    Login Saksi
+@endsection
 
 @section('page-content')
     <x-authentication-card>
@@ -26,7 +28,7 @@
                 <div class="label">
                     <span class="label-text">NIK</span>
                 </div>
-                <input name="auth" type="text" placeholder="Masukan NIK anda" :value="old('auth')"
+                <input name="auth" type="number" placeholder="Masukan NIK anda" :value="old('auth')"
                     class="input input-bordered focus:border-warning focus:outline-none w-full" required
                     autocomplete="auth" />
 

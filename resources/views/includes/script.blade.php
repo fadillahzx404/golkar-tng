@@ -3,20 +3,14 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<link rel="stylesheet" href="https://cdn.datatables.net/2.1.0/css/dataTables.dataTables.css" />
-
-<script src="https://cdn.datatables.net/2.1.0/js/dataTables.js"></script>
-
-<script src="https://cdn.datatables.net/buttons/3.1.0/js/dataTables.buttons.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.1.0/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/3.1.0/js/buttons.print.min.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -28,15 +22,14 @@
         var table = $('#datatable').DataTable({
                 responsive: true
             })
-            .columns.adjust();
-
+            .columns.adjust()
+            .responsive.recalc();
     });
 </script>
 
 <script>
     $('#searchInput').keyup(function() {
         var table = $('.datatable').DataTable();
-
         table.search($(this).val()).draw();
     });
 </script>
@@ -50,7 +43,21 @@
         });
         $('select[name="kecamatan"]').change(function() {
             onChangeSelect("{{ route('districts') }}", $(this).val(), 'kelurahan')
+            $('#TPS option').remove();
+            $('#TPS').append('<option> - Pilih TPS - </option>');
         })
+        $('select[name="kelurahan"]').on('change', function() {
+            $('#TPS').append('<option> - Pilih TPS - </option>');
+            $('#TPS option').remove();
+            let jml_tps = $('select[name="kelurahan"] :selected').attr('class');
+            $('#TPS').append('<option> - Pilih TPS - </option>');
+            for (let index = 1; index < jml_tps; index++) {
+                $('#TPS').append('<option  value="' + index + '"> TPS ' + index +
+                    '</option>');
+            }
+
+        })
+
     })
 </script>
 
@@ -67,11 +74,16 @@
                 $('#' + name).empty();
                 $('#' + name).append('<option> - Pilih Kelurahan - </option>');
                 $.each(data, function(key, value) {
-                    $('#' + name).append('<option value="' + value.kode + '">' + value.nama +
+
+                    $('#' + name).append('<option class="' + value.jml_tps + '" value="' + value
+                        .kode + '">' + value.nama +
                         '</option>');
+
                 });
+
             }
         });
+
     }
 </script>
 

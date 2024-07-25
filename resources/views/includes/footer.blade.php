@@ -18,7 +18,7 @@
         </div>
 
         <div class="flex self-center  bg-white w-24 h-24 rounded-full">
-            <img src="{{ asset('images/logo.png') }}" class="w-24 rounded-full" alt="">
+            <img src="{{ asset('images/logo-golkar.png') }}" class="w-24 rounded-full" alt="">
         </div>
         <div class="grid gap-4 max-sm:place-items-center lg:place-items-end">
             <a href="" class="font-bold">

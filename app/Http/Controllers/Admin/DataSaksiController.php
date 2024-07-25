@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
+use Flasher\Prime\FlasherInterface;
 
 class DataSaksiController extends Controller
 {
@@ -13,7 +14,8 @@ class DataSaksiController extends Controller
      */
     public function index()
     {
-        return view('author.admin.data-saksi.index');
+        $datas = Rekapitulasi::where('status', 'not yet verified')->with('kelRelation')->with('kecRelation')->get();
+        return view('author.admin.data-saksi.index', ['datas' => $datas]);
     }
 
     /**
@@ -45,15 +47,26 @@ class DataSaksiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $datas = Rekapitulasi::with(['kelRelation', 'kecRelation', 'userRelation'])->findOrFail($id);
+        return view('author.admin.data-saksi.edit', ['datas' => $datas]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+
+        Rekapitulasi::where('Id', $id)
+            ->update([
+                'status' =>  $request->status,
+                'user_verif' =>  $request->user_verif,
+            ]);
+
+
+        flash('Data Saksi Telah Ubah Verifikasinya !!');
+        return redirect()
+            ->route('data-saksi.index');
     }
 
     /**

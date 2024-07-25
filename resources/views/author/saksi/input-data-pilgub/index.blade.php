@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-content')
-    <div class="container lg:px-12 pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen">
+    <div class="container lg:px-12 pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full">
 
         <div class="flash-data" data-flash="{!! \Session::get('Success') !!}"></div>
         <p class="text-3xl font-bold underline underline-offset-8">@yield('title')</p>
@@ -155,8 +155,10 @@
                         <hr class="border-b border-2 max-sm:mx-12 mt-8 border-gray-500 border-dashed" />
 
                         <div class="w-full flex justify-center py-8">
-                            <div class="rounded-full w-36 h-36 bg-gray-400 text-center place-content-center">
-                                <i class="fa-solid fa-user-group fa-5x"></i>
+                            <div class="w-full flex justify-center py-8">
+
+                                <img src="{{ asset('images/paslon2.png') }}" class="w-72 shadow-lg p-4 border rounded-md"
+                                    alt="">
                             </div>
                         </div>
 
@@ -173,9 +175,9 @@
                         <hr class="border-b border-2 max-sm:mx-12 mt-8 border-gray-500 border-dashed" />
 
                         <div class="w-full flex justify-center py-8">
-                            <div class="rounded-full w-36 h-36 bg-gray-400 text-center place-content-center">
-                                <i class="fa-solid fa-user-group fa-5x"></i>
-                            </div>
+
+                            <img src="https://akcdn.detik.net.id/visual/2022/05/08/elin-pengamen-badut-cilik-yang-viral-berwajah-cantik-2_43.jpeg?w=720&q=90"
+                                class="w-72 shadow-lg p-4 border rounded-md" alt="">
                         </div>
 
 

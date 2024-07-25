@@ -16,7 +16,7 @@ class Rekapitulasi extends Model
         'tps',
         'dpt',
         'sah',
-        'tidak-sah',
+        'tidak_sah',
         'dokumen',
         'status',
         'user',
@@ -25,4 +25,23 @@ class Rekapitulasi extends Model
         'paslon2',
         'jenis'
     ];
+
+    /**
+     * Get the kelRelation that owns the Rekapitulasi
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function kelRelation()
+    {
+        return $this->belongsTo(Kelurahan::class, 'kelurahan', 'kode');
+    }
+    public function kecRelation()
+    {
+        return $this->belongsTo(Kecamatan::class, 'kecamatan', 'kode');
+    }
+
+    public function userRelation()
+    {
+        return $this->belongsTo(User::class, 'user', 'nik');
+    }
 }

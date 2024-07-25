@@ -1,6 +1,6 @@
-<div class="container lg:px-8 max-lg:px-0 sticky lg:top-5  z-40">
+<div class="container lg:px-8 max-lg:px-0 sticky max-sm:top-0 lg:top-5 z-40">
     <div class="navbar bg-white lg:rounded-lg lg:border-1 z-40 shadow-md">
-        <div class="flex flex-row grow lg:justify-end  max-lg:justify-between">
+        <div class="flex flex-row grow justify-between">
             <div class="flex-none lg:hidden">
                 <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-ghost">
 
@@ -11,15 +11,11 @@
                     </svg>
                 </label>
             </div>
-
+            <p class="font-bold px-5 text-gradient max-sm:hidden">Badan Saksi Nasional Golkar</p>
 
             @if (Route::has('login'))
                 <div class="flex space-x-3 lg:px-8">
                     <div class="dropdown dropdown-end {{ Auth::user()->roles !== 'SAKSI' ? 'hidden' : '' }}">
-
-
-
-
                     </div>
                     <div class="grid">
                         <p class="">Hello, <b>{{ Auth::user()->name }}</b></p>
@@ -40,7 +36,7 @@
                                     Homepage
                                 </a>
                             </li>
-                            <li><a href="" class="hover:bg-warning hover:text-white">Profile</a>
+
                             </li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}"

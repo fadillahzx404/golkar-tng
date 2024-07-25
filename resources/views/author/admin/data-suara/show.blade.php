@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-content')
-    <div class="containercontainer  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen">
+    <div class="container lg:px-12  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full overflow-auto">
 
 
         <p class="text-3xl font-bold underline underline-offset-8">Data Saksi {{ $data->user }}</p>

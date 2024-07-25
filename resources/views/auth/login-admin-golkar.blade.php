@@ -1,4 +1,10 @@
-<x-guest-layout>
+@extends('layouts.guest')
+
+@section('title')
+    Login Admin Golkar
+@endsection
+
+@section('page-content')
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
@@ -65,4 +71,4 @@
             </div>
         </form>
     </x-authentication-card>
-</x-guest-layout>
+@endsection

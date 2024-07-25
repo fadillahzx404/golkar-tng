@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
 
 class DataSuaraController extends Controller
@@ -13,7 +13,9 @@ class DataSuaraController extends Controller
      */
     public function index()
     {
-        return view('author.admin.data-suara.index');
+
+        $datas = Rekapitulasi::where('status', 'Verif')->with(['kelRelation', 'kecRelation', 'userRelation'])->get();
+        return view('author.admin.data-suara.index', ['datas' => $datas]);
     }
 
     /**
@@ -37,7 +39,8 @@ class DataSuaraController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Rekapitulasi::findOrFail($id);
+        return view('author.admin.data-suara.show', ['data' => $data]);
     }
 
     /**

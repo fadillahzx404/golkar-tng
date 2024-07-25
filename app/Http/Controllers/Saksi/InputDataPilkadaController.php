@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Saksi;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kecamatan;
-use App\Models\Kelurahan;
 use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,12 +69,13 @@ class InputDataPilkadaController extends Controller
             'dokumen' => $path . $file_name,
             'dpt' => $request->dpt,
             'sah' => $request->sah,
-            'tidak-sah' => $request->tidak_sah,
+            'tidak_sah' => $request->tidak_sah,
             'jenis' => 'pilkada',
             'user' => Auth::user()->nik
         ]);
 
-        return redirect('author/input-data-pilkada')->with('success', 'Rekapitulasi berhasil ditambahkan!');
+        flash('Input Data Pilkada Berhasil Ditambahkan !');
+        return  redirect()->route('dashboard');
     }
 
     /**
@@ -84,7 +83,8 @@ class InputDataPilkadaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Rekapitulasi::findOrFail($id);
+        return view('author.saksi.input-data-pilkada.show', ['data' => $data]);
     }
 
     /**

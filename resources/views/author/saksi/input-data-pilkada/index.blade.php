@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-content')
-    <div class="container lg:px-12 pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen">
+    <div class="container-fluid lg:px-12 pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full">
 
         <div class="flash-data" data-flash="{!! \Session::get('status') !!}"></div>
         <p class="text-3xl font-bold underline underline-offset-8">@yield('title')</p>
@@ -127,9 +127,9 @@
                         <hr class="border-b border-2 max-sm:mx-12 mt-8 border-gray-500 border-dashed" />
 
                         <div class="w-full flex justify-center py-8">
-                            <div class="rounded-full w-36 h-36 bg-gray-400 text-center place-content-center">
-                                <i class="fa-solid fa-user-group fa-5x"></i>
-                            </div>
+                            <img src="{{ asset('images/paslon1.png') }}" class="w-64 shadow-lg p-4 border rounded-md"
+                                alt="">
+
                         </div>
 
 
@@ -146,9 +146,8 @@
                         <hr class="border-b border-2 max-sm:mx-12 mt-8 border-gray-500 border-dashed" />
 
                         <div class="w-full flex justify-center py-8">
-                            <div class="rounded-full w-36 h-36 bg-gray-400 text-center place-content-center">
-                                <i class="fa-solid fa-user-group fa-5x"></i>
-                            </div>
+                            <img src="https://www.lazone.id/storage/news/Oktober%202021/07%20Oktober/4.%20Tanda%20Tanda%20Jadi%20Badut%20di%20Hubungan%20Lo/cover.jpg"
+                                class="w-72 shadow-lg p-4 border rounded-md" alt="">
                         </div>
 
 

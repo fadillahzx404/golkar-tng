@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $userAdmin = User::where('roles', 'like', '%ADMIN%')->get();
-        $userSaksi = User::where('roles', 'like', '%SAKSI%')->get();
-        return view('author.admin.users.index', ['userAdmin' => $userAdmin, 'userSaksi' => $userSaksi]);
+        $nik = Auth::user()->nik;
+        $userRekap = Rekapitulasi::where('user', $nik)->get();
+        $adminRekap = Rekapitulasi::where('status', 'not yet verified')->orderBy('Id', 'ASC')->take(5)->get();
+
+
+        return view('author.dashboard',  ['userRekap' => $userRekap, 'adminRekap' => $adminRekap]);
     }
 
     /**

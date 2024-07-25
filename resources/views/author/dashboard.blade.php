@@ -5,119 +5,59 @@
 @endsection
 
 @section('page-content')
-    <div class="container lg:px-12 pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen">
+    <div class="container lg:px-12  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full overflow-hidden">
         <p class="text-center text-black w-full pb-8 font-bold text-4xl animate-bounce">Welcome {{ Auth::user()->name }}</p>
-        <section
-            class="max-sm:hidden content-1 w-full flex max-sm:flex-col justify-evenly  max-sm:space-y-12 max-sm:items-center">
-            <div class="relative ">
-
-                <div
-                    class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
-
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahan</div>
-                    <div class="flex space-x-2 ">
-                        <div class="stat-value ">312</div>
-                        <div class="lg:place-content-end">Data</div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="relative ">
-
-                <div
-                    class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
-
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kecamatan</div>
-                    <div class="flex space-x-2 ">
-                        <div class="stat-value ">312</div>
-                        <div class="place-content-end">Data</div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="relative ">
-
-                <div
-                    class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
-
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kota/Kabupaten</div>
-                    <div class="flex space-x-2 ">
-                        <div class="stat-value ">312</div>
-                        <div class="place-content-end">Data</div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-        </section>
-
         @if (AUth::user()->roles == 'ADMIN')
-            <section class="content-3 flex flex-col bg-primary ">
-                <div
-                    class="lg:flex max-sm:grid max-sm:px-4 max-sm:space-y-4 justify-between px-8 py-8 lg:space-x-8 max-sm:self-center">
-                    <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-                        <div class="grid  w-full">
-                            <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Perbandingan
-                                Paslon
-                                Lain</h5>
-                            <div class="divider "></div>
+            <section
+                class="max-sm:hidden content-1 w-full flex max-sm:flex-col justify-evenly  max-sm:space-y-12 max-sm:items-center">
+                <div class="relative ">
+
+                    <div
+                        class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
+
+                        <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahan</div>
+                        <div class="flex space-x-2 ">
+                            <div class="stat-value ">312</div>
+                            <div class="lg:place-content-end">Data</div>
                         </div>
-                        <!-- Line Chart -->
-                        <div class="py-6" id="pie-chart"></div>
-
-
-                    </div>
-
-
-
-                    <div class="min-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-                        <div class="flex justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center me-3">
-                                    <svg class="w-6 h-6 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 19">
-                                        <path
-                                            d="M14.5 0A3.987 3.987 0 0 0 11 2.1a4.977 4.977 0 0 1 3.9 5.858A3.989 3.989 0 0 0 14.5 0ZM9 13h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" />
-                                        <path
-                                            d="M5 19h10v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2ZM5 7a5.008 5.008 0 0 1 4-4.9 3.988 3.988 0 1 0-3.9 5.859A4.974 4.974 0 0 1 5 7Zm5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm5-1h-.424a5.016 5.016 0 0 1-1.942 2.232A6.007 6.007 0 0 1 17 17h2a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5ZM5.424 9H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h2a6.007 6.007 0 0 1 4.366-5.768A5.016 5.016 0 0 1 5.424 9Z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">Kecamatan
-                                    </h5>
-                                    <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Data Yang Masuk
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <span
-                                    class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
-                                    <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 10 14">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4" />
-                                    </svg>
-                                    42.5%
-                                </span>
-                            </div>
-                        </div>
-
-
-
-                        <div id="column-chart"></div>
 
                     </div>
 
                 </div>
+                <div class="relative">
+
+                    <div
+                        class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
+
+                        <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kecamatan</div>
+                        <div class="flex space-x-2 ">
+                            <div class="stat-value ">312</div>
+                            <div class="place-content-end">Data</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="relative">
+
+                    <div
+                        class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
+
+                        <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kota/Kabupaten</div>
+                        <div class="flex space-x-2 ">
+                            <div class="stat-value ">312</div>
+                            <div class="place-content-end">Data</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
             </section>
-        @else
+
             <section class="section lg:pt-8">
                 <div class="flash-data" data-flash="{!! \Session::get('Success') !!}"></div>
 
@@ -152,58 +92,198 @@
                                 placeholder="Search for items">
                         </div>
                     </div>
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 datatable display"
-                        id="datatable">
-                        <thead class="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400">
+
+                    <table
+                        class="w-full text-sm text-left text-gray-500 dark:text-gray-400 datatable display responsive nowrap"
+                        id="datatable" width="100%">
+                        <thead class="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400 w-full">
                             <tr>
-                                <th scope="col" class="p-4">
+                                <th scope="col" class="py-4 w-4">
                                     No
                                 </th>
-                                <th scope="col" class="p-4 text-center">
-                                    Jenis
+                                <th scope="col" class="py-4">
+                                    TPS
                                 </th>
-                                <th scope="col" class="p-4 text-center">
+                                <th scope="col" class="py-4 ">
+                                    Kelurahan
+                                </th>
+                                <th scope="col" class="py-4 ">
+                                    Kecamatan
+                                </th>
+                                <th scope="col" class="py-4 ">
                                     Total
                                 </th>
-                                <th scope="col" class="p-4 text-center">
-                                    Status
+                                <th scope="col" class="py-4 ">
+                                    Photo
                                 </th>
-                                <th scope="col" class="p-4 text-end">
+                                <th scope="col" class="py-4 " style="text-align: end">
                                     Action
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr>
-                                <td class="max-w-4 p-4 text-center">1</td>
-                                <td class="py-4">Pilkada</td>
-                                <td class="py-4 text-center">234</td>
-                                <td class="py-4 text-center">
-                                    <div class="badge badge-accent">accent</div>
-                                </td>
-                                <td class="p-4 text-end">
+                            @foreach ($userRekap as $uR)
+                                <tr>
+                                    <td class="w-4 py-4 text-center"> {{ $loop->iteration }}</td>
+                                    <th scope="row" class="py-4 text-center">TPS {{ $uR->tps }}</th>
+                                    <td scope="row" class="py-4 text-center">{{ $uR->kelRelation->nama }}</td>
+                                    <td scope="row" class="py-4 text-center">{{ $uR->kecRelation->nama }}</td>
+                                    <td scope="row" class="py-4 text-center">
 
-                                    <div class="flex gap-2 justify-end">
-                                        <a href=""
-                                            class="bg-orange-200 hover:bg-orange-400 p-3 rounded-md hover:text-white tooltip"
-                                            data-tip="Edit"><span><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <form action=""
-                                            class="bg-red-200 hover:bg-red-500 p-3 rounded-md hover:text-white tooltip"
-                                            data-tip="Delete" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"><i class="fa-solid fa-trash"></i>
-                                            </button>
-                                        </form>
+                                        <!-- You can open the modal using ID.showModal() method -->
+                                        <button class="btn btn-sm btn-warning" onclick="my_modal_3.showModal()">open
+                                            modal</button>
+                                        <dialog id="my_modal_3" class="modal">
+                                            <div class="modal-box w-11/12 max-w-5xl">
+                                                <form method="dialog">
+                                                    <button
+                                                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                </form>
+                                                <h3 class="text-lg font-bold">Photo C1</h3>
+                                                <img src="{{ asset("$uR->dokumen") }}" class=" border-2 rounded-xl"
+                                                    alt="">
+                                            </div>
+                                        </dialog>
 
-                                    </div>
 
-                                </td>
-                            </tr>
+                                    </td>
+
+                                    <td scope="row" class="py-4 text-center">
+                                        <div
+                                            class="badge @switch($uR->status)
+                                            @case('Verif')
+                                                bg-accent
+                                                @break
+                                                @case('Not Verif')
+                                                   bg-red-300
+                                                @break
+
+                                            @default
+                                                bg-orange-300
+                                        @endswitch p-3">
+                                            {{ Str::upper($uR->status) }}</div>
+                                    </td>
+                                    <td scope="row" class="p-4  text-end min-w-44">
+
+
+                                        <a href="{{ route('show-input-saksi', $uR->Id) }}"
+                                            class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg">
+                                            Detail<span></a>
+
+
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
+            </section>
+        @else
+            <section class="table-reviews bg-white rounded-lg w-full">
+                <div class="relative overflow-x-auto shadow-lg border-b border-gray-200 rounded-lg p-5">
+                    <div class="pb-4 bg-white dark:bg-gray-900">
+                        <label for="table-search" class="sr-only">Search</label>
+                        <div class="relative mt-1">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
+                            </div>
+                            <input type="text"
+                                class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Search for items" id="searchInput">
+                        </div>
+                    </div>
+                    <table
+                        class="w-full text-sm text-left text-gray-500 dark:text-gray-400 datatable display responsive nowrap"
+                        width="100%" id="datatable">
+                        <thead class="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400 w-full">
+                            <tr>
+                                <th scope="col" data-priority="1" class="py-4 w-4 text-center">
+                                    No
+                                </th>
+                                <th scope="col" data-priority="4" data-priority="1" class="py-4 text-center">
+                                    TPS
+                                </th>
+                                <th scope="col" data-priority="6" class="py-4 text-center">
+                                    Kelurahan
+                                </th>
+                                <th scope="col" data-priority="7" class="py-4 text-center">
+                                    Kecamatan
+                                </th>
+                                <th scope="col" data-priority="5" class="py-4 text-center ">
+                                    Photo
+                                </th>
+                                <th scope="col" data-priority="3" class="py-4 text-center ">
+                                    Status
+                                </th>
+                                <th scope="col" data-priority="2" class="py-4 text-end">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($userRekap as $uR)
+                                <tr>
+                                    <td class=" py-4 w-4 text-center "> {{ $loop->iteration }}</td>
+                                    <th scope="row" class="py-4 text-center">TPS {{ $uR->tps }}</th>
+                                    <td scope="row" class="py-4 text-center">{{ $uR->kelRelation->nama }}</td>
+                                    <td scope="row" class="py-4 text-center">{{ $uR->kecRelation->nama }}</td>
+                                    <td scope="row" class="py-4 text-center">
+
+                                        <!-- You can open the modal using ID.showModal() method -->
+                                        <button class="btn btn-sm btn-warning" onclick="my_modal_3.showModal()">open
+                                            modal</button>
+                                        <dialog id="my_modal_3" class="modal">
+                                            <div class="modal-box w-11/12 max-w-5xl">
+                                                <form method="dialog">
+                                                    <button
+                                                        class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                </form>
+                                                <h3 class="text-lg font-bold">Photo C1</h3>
+                                                <img src="{{ asset("$uR->dokumen") }}" class=" border-2 rounded-xl"
+                                                    alt="">
+                                            </div>
+                                        </dialog>
+
+
+                                    </td>
+
+                                    <td scope="row" class="py-4 text-center">
+                                        <div
+                                            class="badge @switch($uR->status)
+                                            @case('Verif')
+                                                bg-accent
+                                                @break
+                                                @case('Not Verif')
+                                                   bg-red-300
+                                                @break
+
+                                            @default
+                                                bg-orange-300
+                                        @endswitch p-3 h-10">
+                                            {{ Str::upper($uR->status) }}</div>
+                                    </td>
+                                    <td scope="row" class="p-4 text-end">
+
+
+                                        <a href="{{ route('show-input-saksi', $uR->Id) }}"
+                                            class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg">
+                                            Detail<span></a>
+
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+
             </section>
         @endif
     </div>

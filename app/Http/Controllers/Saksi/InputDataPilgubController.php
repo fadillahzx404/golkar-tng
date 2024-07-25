@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+
 class InputDataPilgubController extends Controller
 {
     /**
@@ -68,12 +69,13 @@ class InputDataPilgubController extends Controller
             'dokumen' => $path . $file_name,
             'dpt' => $request->dpt,
             'sah' => $request->sah,
-            'tidak-sah' => $request->tidak_sah,
+            'tidak_sah' => $request->tidak_sah,
             'jenis' => 'pilgub',
             'user' => Auth::user()->nik
         ]);
 
-        return redirect('author/input-data-pilgub')->with('success', 'Rekapitulasi berhasil ditambahkan!');
+        flash('Input Data Pilgub Berhasil Ditambahkan !');
+        return  redirect()->route('dashboard');
     }
 
     /**
@@ -81,7 +83,8 @@ class InputDataPilgubController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Rekapitulasi::findOrFail($id);
+        return view('author.saksi.input-data-pilgub.show', ['data' => $data]);
     }
 
     /**
