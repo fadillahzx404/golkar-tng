@@ -42,7 +42,10 @@ class DashboardController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $data = Rekapitulasi::findOrFail($id);
+
+        return view('author.saksi.show-data-input',  ['data' => $data]);
     }
 
     /**

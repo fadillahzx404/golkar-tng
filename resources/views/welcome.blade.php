@@ -8,8 +8,8 @@
         <section
             class="main-content bg-primary lg:h-[1000px] lg:text-center max-sm:text-start max-sm:px-5 relative overflow-hidden">
             <div class="hero lg:pt-44 max-sm:pt-12 flex flex-col relative z-20">
-                <p class="lg:text-5xl max-sm:text-6xl text-black font-extrabold">Real Count Golkar Web Apps</p>
-                <p class="text-xl text-black font-medium max-sm:pt-4">Ikuti terus Real count yang berlangsung.</p>
+                <p class="lg:text-5xl max-sm:text-6xl text-black font-extrabold">Aplikasi Perhitungan Suara Partai Golkar</p>
+                <p class="text-xl text-black font-medium max-sm:pt-4">Ikuti terus Perhitungan yang berlangsung.</p>
             </div>
             <div class="flex max-sm:flex-col justify-center max-sm:space-y-24 lg:justify-evenly py-16 max-sm:pb-24">
                 <div class="relative">
