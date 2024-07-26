@@ -1,7 +1,7 @@
 <script src=" https://kit.fontawesome.com/d3336582c4.js" crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
 <!--Datatables -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -24,6 +24,9 @@
             })
             .columns.adjust()
             .responsive.recalc();
+
+
+
     });
 </script>
 
