@@ -8,13 +8,13 @@
     <div class="container lg:px-12  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full overflow-auto">
 
 
-        <div class="flex space-x-6">
+        <div class="flex gap-4 pb-3">
             <p class="text-3xl font-bold underline underline-offset-8">Data Saksi {{ $data->userRelation->name }}</p>
             <a href="{{ route('dashboard') }}" class="p-3 btn btn-info"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <section class="section lg:py-8">
 
-            <div class="relative overflow-x-auto shadow-lg borde bg-white border-gray-200 sm:rounded-lg p-5">
+            <div class="relative overflow-x-auto shadow-lg border   bg-white border-gray-200 sm:rounded-lg p-5">
                 <div class="title-table grid">
                     <div class="flex justify-between">
                         <div class="grid w-full">
@@ -69,7 +69,7 @@
                             data-modal-toggle="default-modal-{{ $data->Id }}"
                             class=" text-black bg-warning hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
-                            Toggle modal
+                            Lihat Foto
                         </a>
 
                         <!-- Main modal -->
