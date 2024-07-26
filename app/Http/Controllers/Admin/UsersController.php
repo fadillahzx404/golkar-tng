@@ -15,7 +15,8 @@ class UsersController extends Controller
     {
         $userAdmin = User::where('roles', 'like', '%ADMIN%')->get();
         $userSaksi = User::where('roles', 'like', '%SAKSI%')->get();
-        return view('author.admin.users.index', ['userAdmin' => $userAdmin, 'userSaksi' => $userSaksi]);
+        $user = User::all();
+        return view('author.admin.users.index', ['userAdmin' => $userAdmin, 'userSaksi' => $userSaksi, 'userAll' => $user]);
     }
 
     /**

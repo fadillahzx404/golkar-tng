@@ -50,6 +50,7 @@ Route::prefix('author')
         Route::resource('/data-saksi', DataSaksiController::class);
         Route::resource('/users', UsersController::class);
         Route::resource('/report', ReportController::class);
+        Route::post('/import-users', [AppController::class, 'import'])->name('import.users');
 
 
         //SAKSI

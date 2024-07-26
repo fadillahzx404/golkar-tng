@@ -27,7 +27,14 @@
                     <hr class="mb-3 mt-2 border-gray-400" />
 
                 </div>
-                <div class="pb-4  ">
+                <div class="">
+                    <form action="{{ route('import.users') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="file" />
+                        <button type="submit" class="btn btn-accent my-4">Import Users</button>
+                    </form>
+                </div>
+                <div class="pb-4">
                     <label for="table-search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -42,6 +49,8 @@
                             placeholder="Search for items">
                     </div>
                 </div>
+                <div class="flash-data" data-flash="{!! \Session::get('Success') !!}"></div>
+
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 display responsive nowrap"
                     width="100%" id="datatable">
                     <thead class="text-xs text-gray-700 uppercase bg-white dark:bg-gray-700 dark:text-gray-400 w-full">
@@ -71,7 +80,7 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($userAdmin as $uA)
+                        @foreach ($userAll as $uA)
                             <tr>
                                 <td class="w-4 py-4 text-center"> {{ $loop->iteration }}</td>
                                 <th scope="row" class="py-4 text-center">{{ $uA->nik }}</th>

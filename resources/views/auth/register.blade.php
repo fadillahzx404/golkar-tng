@@ -59,7 +59,7 @@
                 <select
                     class="select select-bordered select-disabled focus:outline-none focus:border-warning font-bold text-black"
                     name="kota" id="kota" required>
-                    <option selected disabled value="3671">Kota Tangerang</option>
+                    <option selected value="3671" readonly>Kota Tangerang</option>
                 </select>
                 {{-- <input name="kota" type="text" value="Kota Tangerang"
                     class="input input-disabled font-bold text-black focus:border-warning focus:outline-none w-full"

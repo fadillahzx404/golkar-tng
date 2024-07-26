@@ -32,6 +32,7 @@ class User extends Authenticatable
         'kelurahan',
         'password',
         'roles',
+        'tps',
     ];
 
     /**
