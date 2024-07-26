@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -13,7 +14,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('author.admin.report.index');
+        $kecamatan = Kecamatan::all();
+        return view('author.admin.report.index', ['kecamatan' => $kecamatan]);
     }
 
     /**

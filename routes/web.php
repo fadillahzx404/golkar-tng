@@ -51,6 +51,7 @@ Route::prefix('author')
         Route::resource('/users', UsersController::class);
         Route::resource('/report', ReportController::class);
         Route::post('/import-users', [AppController::class, 'import'])->name('import.users');
+        Route::post('/rekap-export', [AppController::class, 'export'])->name('export.rekap');
 
 
         //SAKSI
