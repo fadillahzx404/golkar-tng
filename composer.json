@@ -16,7 +16,11 @@
         "livewire/livewire": "^3.0",
         "maatwebsite/excel": "^3.1",
         "php-flasher/flasher-laravel": "^1.15",
+<<<<<<< HEAD
         "yajra/laravel-datatables-oracle": "^10.3.1"
+=======
+        "yajra/laravel-datatables": "^10.1"
+>>>>>>> c1bf1a41c4abcc2bbdaba90cc7f91eb51621aa5a
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
