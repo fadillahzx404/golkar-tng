@@ -84,7 +84,7 @@
                             id="kecamatan" required>
                             <option disabled selected value=""> - Pilih Kecamatan - </option>
                             @foreach ($kecamatan as $kc)
-                                <option value="{{ $kc->nama }}" @if ($data->kecamatan == $kc->nama)
+                                <option value="{{ $kc->kode }}" @if ($data->kecamatan == $kc->kode)
                                     selected
                                 @endif>{{ $kc->nama }}</option>
                             @endforeach
@@ -105,7 +105,7 @@
                         <div class="label">
                             <span class="label-text">TPS (Tempat Pemilihan Suara)</span>
                         </div>
-                        <select class="select select-bordered focus:outline-none focus:border-warning" name="TPS" id="TPS"
+                        <select class="select select-bordered focus:outline-none focus:border-warning" name="tps" id="tps"
                             required>
                             <option disabled selected value=""> - Pilih TPS - </option>
                         </select>
@@ -145,59 +145,53 @@
 
 @push('addon-script')
 
-
-
 <script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $('select[name="kecamatan"]').change(function() {
-            onChangeSelect("{{ route('districts') }}", $(this).val(), 'kelurahan')
-            $('#TPS option').remove();
-            $('#TPS').append('<option> - Pilih TPS - </option>');
-        })
-        $('select[name="kelurahan"]').on('change', function() {
-            $('#TPS').append('<option> - Pilih TPS - </option>');
-            $('#TPS option').remove();
-            let jml_tps = $('select[name="kelurahan"] :selected').attr('class');
-            $('#TPS').append('<option> - Pilih TPS - </option>');
-            for (let index = 1; index < jml_tps; index++) {
-                $('#TPS').append('<option id="opt_tps" value="' + index + '"> TPS ' + index +
-                    '</option>');
-            }
+    $(function() {
+    let kec = $('select[name="kecamatan"]').find(":selected").val();
+    let kelSelect = {!! json_encode($data->kelurahan) !!}
+    let tpsSelect = {!! json_encode($data->tps) !!}
 
-        })
 
-    })
-</script>
 
-<script>
-    function onChangeSelect(url, id, name) {
-        // send ajax request to get the cities of the selected province and append to the select tag
         $.ajax({
-            url: url,
+            url: "{!! route('districts') !!}",
             type: 'GET',
             data: {
-                id: id
+                id: kec
             },
             success: function(data) {
-                $('#' + name).empty();
-                $('#' + name).append('<option> - Pilih Kelurahan - </option>');
+                $('#kelurahan').empty();
+                $('#kelurahan').append('<option> - Pilih Kelurahan - </option>');
                 $.each(data, function(key, value) {
 
-                    $('#' + name).append('<option id="opt_kel" class="' + value.jml_tps + '" value="' + value
-                        .kode + '">' + value.nama +
+                        $('#kelurahan').append('<option id="opt_kel" class="' + value.jml_tps + '" value="' + value
+                        .kode + ' ">' + value.nama +
                         '</option>');
+
+                        $("select[name='kelurahan'] option").each(function(){
+                        if (value.kode == kelSelect)
+                            $(this).attr("selected","selected");
+                        });
+
+                        for (let index = 1; index < value.jml_tps; index++) {
+                        $('#tps').append('<option id="opt_tps" value="' + index + '"> TPS ' + index +'</option>');
+
+                        }
+
+                        
+                        if (value.jml_tps == tpsSelect){
+                            $("select[name='tps'] option").attr("selected","selected");
+                        }
+
+
 
                 });
 
             }
         });
 
-    }
+
+    })
 </script>
 
 @endpush
