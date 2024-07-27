@@ -13,16 +13,14 @@
 
             <div class="relative overflow-x-auto shadow-lg borde bg-white border-gray-200 sm:rounded-lg p-5">
                 <div class="title-table grid">
-                    <div class="flex justify-between">
-                        <div class="grid place-content-center">
-                            <p class="text-lg font-bold">Users Management ADMIN</p>
-                            <p class="text-sm font-light text-gray-400">All Data on here, you can add new Data,
-                                edit or
-                                delete.
-                            </p>
-                        </div>
-
+                    <div class="flex justify-between ">
+                        <p class="text-lg font-bold">Users Management ADMIN</p>
+                        <a href="{{ route('users.create') }}" class="btn btn-info btn-sm">Tambah User</a>
                     </div>
+                    <p class="text-sm font-light text-gray-400">All Data on here, you can add new Data,
+                        edit or
+                        delete.
+                    </p>
 
                     <hr class="mb-3 mt-2 border-gray-400" />
 

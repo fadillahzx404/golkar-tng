@@ -29,7 +29,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        $kecamatan = Kecamatan::all();
+        return view('author.admin.users.create', ['kecamatan' => $kecamatan]);
     }
 
     /**
@@ -37,7 +38,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+
+        User::create($data);
+
+        flash("Selamat Data User $request->name Ditambahkan !!");
+        return redirect()
+            ->route('users.index');
     }
 
     /**
@@ -63,7 +71,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd($request->all());
+        $data = $request->all();
+        $item = User::findOrFail($id);
+
+        $item->update($data);
+
+        flasher("User $request->name Berhasil Di Edit !!");
+        return redirect()->route('users.index');
     }
 
     /**
