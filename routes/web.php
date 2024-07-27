@@ -1,8 +1,7 @@
 <?php
 
 //Admin
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\QuickCountController;
+
 use App\Http\Controllers\Admin\DataSuaraController;
 use App\Http\Controllers\Admin\DataSaksiController;
 use App\Http\Controllers\Admin\UsersController;
@@ -13,8 +12,9 @@ use App\Http\Controllers\Saksi\InputDataPilgubController;
 use App\Http\Controllers\Saksi\InputDataPilkadaController;
 use App\Http\Controllers\AuthAdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UsersApiController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +45,11 @@ Route::prefix('author')
         //ADMIN
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/dashboard/input-saksi/{id}', [DashboardController::class, 'show'])->name('show-input-saksi');
-        Route::resource('/quick-count', QuickCountController::class);
         Route::resource('/data-suara', DataSuaraController::class);
         Route::resource('/data-saksi', DataSaksiController::class);
         Route::resource('/users', UsersController::class);
+        Route::get('/users-json', [UsersController::class, 'data'])->name('users.data');
+        // Route::get('/users/json', UsersController::class, 'data');
         Route::resource('/report', ReportController::class);
         Route::post('/import-users', [AppController::class, 'import'])->name('import.users');
 

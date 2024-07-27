@@ -64,4 +64,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function kelRelation()
+
+    {
+        return $this->hasOne(Kelurahan::class, 'kode', 'kelurahan');
+    }
+    public function kecRelation()
+    {
+        return $this->hasOne(Kecamatan::class, 'kode', 'kecamatan');
+    }
 }

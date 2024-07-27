@@ -1,4 +1,5 @@
-<x-guest-layout>
+@extends('layouts.guest')
+@section('page-content')
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
@@ -21,7 +22,8 @@
 
             <div class="block">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
+                    autofocus autocomplete="username" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -31,4 +33,4 @@
             </div>
         </form>
     </x-authentication-card>
-</x-guest-layout>
+@endsection

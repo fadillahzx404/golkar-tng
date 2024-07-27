@@ -1,10 +1,12 @@
 <script src=" https://kit.fontawesome.com/d3336582c4.js" crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-    crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
 
 <!--Datatables -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
 
@@ -20,10 +22,9 @@
     $(document).ready(function() {
 
         var table = $('#datatable').DataTable({
-                responsive: true
+                responsive: true,
             })
-            .columns.adjust()
-            .responsive.recalc();
+            .columns.adjust();
 
 
 
@@ -55,7 +56,7 @@
             let jml_tps = $('select[name="kelurahan"] :selected').attr('class');
             $('#TPS').append('<option> - Pilih TPS - </option>');
             for (let index = 1; index < jml_tps; index++) {
-                $('#TPS').append('<option  value="' + index + '"> TPS ' + index +
+                $('#TPS').append('<option id="opt_tps" value="' + index + '"> TPS ' + index +
                     '</option>');
             }
 
@@ -78,7 +79,7 @@
                 $('#' + name).append('<option> - Pilih Kelurahan - </option>');
                 $.each(data, function(key, value) {
 
-                    $('#' + name).append('<option class="' + value.jml_tps + '" value="' + value
+                    $('#' + name).append('<option id="opt_kel" class="' + value.jml_tps + '" value="' + value
                         .kode + '">' + value.nama +
                         '</option>');
 
