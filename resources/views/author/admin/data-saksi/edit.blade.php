@@ -38,7 +38,7 @@
 
                     <div class="title-kec text-center">
                         <p class="text-lg">Kelurahan</p>
-                        <p class="font-bold text-xl">{{ $datas->tps }}</p>
+                        <p class="font-bold text-xl">{{ $datas->kelRelation->nama }}</p>
                     </div>
 
                     <div class="title-tps text-center">

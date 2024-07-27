@@ -56,7 +56,7 @@
 
                     <div class="title-kec text-center">
                         <p class="text-lg">Kelurahan</p>
-                        <p class="font-bold text-xl">{{ $data->tps }}</p>
+                        <p class="font-bold text-xl">{{ $data->kelRelation->nama }}</p>
                     </div>
 
                     <div class="title-tps text-center">
