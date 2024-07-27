@@ -27,53 +27,57 @@
 
                 </div>
 
-                <form action="{{ route('users.update', $data->id) }}" method="POST" enctype="multipart/form-data" class="grid p-3 space-y-1 pt-2 text-2xl">
+                <form action="{{ route('users.update', $data->id) }}" method="POST" enctype="multipart/form-data"
+                    class="grid p-3 space-y-1 pt-2 text-2xl">
                     @csrf
                     @method('PUT')
                     <label class="form-control w-full ">
                         <div class="label">
-                          <span class="label-text">Roles</span>
+                            <span class="label-text">Roles</span>
                         </div>
                         <select class="select select-bordered" name="roles">
                             @php
-                                $values = ['Saksi Pilgub', 'Saksi Pilkada', 'Admin', 'Master Admin']
+                                $values = ['Saksi Pilgub', 'Saksi Pilkada', 'Admin', 'Master Admin'];
                             @endphp
 
-                          @foreach ($values as  $val)
-                          <option value="{{ Str::upper($val) }}" @if ($data->roles == Str::upper($val))
-                              selected
-                          @endif>{{ $val }}</option>
-                          @endforeach
+                            @foreach ($values as $val)
+                                <option value="{{ Str::upper($val) }}" @if ($data->roles == Str::upper($val)) selected @endif>
+                                    {{ $val }}</option>
+                            @endforeach
                         </select>
 
-                      </label>
-
-                    <label class="form-control w-full ">
-                        <div class="label">
-                          <span class="label-text">NIK</span>
-                        </div>
-                        <input type="text" name="nik" value="{{ $data->nik }}" class="input input-bordered w-full " />
                     </label>
 
                     <label class="form-control w-full ">
                         <div class="label">
-                          <span class="label-text">Nama</span>
+                            <span class="label-text">NIK</span>
                         </div>
-                        <input type="text" name="name" value="{{ $data->name }}" class="input input-bordered w-full " />
+                        <input type="text" name="nik" value="{{ $data->nik }}"
+                            class="input input-bordered w-full " />
                     </label>
 
                     <label class="form-control w-full ">
                         <div class="label">
-                          <span class="label-text">Email</span>
+                            <span class="label-text">Nama</span>
                         </div>
-                        <input type="text" name="email" value="{{ $data->email }}" class="input input-bordered w-full " />
+                        <input type="text" name="name" value="{{ $data->name }}"
+                            class="input input-bordered w-full " />
                     </label>
 
                     <label class="form-control w-full ">
                         <div class="label">
-                          <span class="label-text">Nomor Telepon</span>
+                            <span class="label-text">Email</span>
                         </div>
-                        <input type="text" name="phone_number" value="{{ $data->phone_number }}" class="input input-bordered w-full " />
+                        <input type="text" name="email" value="{{ $data->email }}"
+                            class="input input-bordered w-full " />
+                    </label>
+
+                    <label class="form-control w-full ">
+                        <div class="label">
+                            <span class="label-text">Nomor Telepon</span>
+                        </div>
+                        <input type="text" name="phone_number" value="{{ $data->phone_number }}"
+                            class="input input-bordered w-full " />
                     </label>
 
                     <label class="form-control w-full">
@@ -84,9 +88,8 @@
                             id="kecamatan" required>
                             <option disabled selected value=""> - Pilih Kecamatan - </option>
                             @foreach ($kecamatan as $kc)
-                                <option value="{{ $kc->kode }}" @if ($data->kecamatan == $kc->kode)
-                                    selected
-                                @endif>{{ $kc->nama }}</option>
+                                <option value="{{ $kc->kode }}" @if ($data->kecamatan == $kc->kode) selected @endif>
+                                    {{ $kc->nama }}</option>
                             @endforeach
                         </select>
                     </label>
@@ -105,8 +108,8 @@
                         <div class="label">
                             <span class="label-text">TPS (Tempat Pemilihan Suara)</span>
                         </div>
-                        <select class="select select-bordered focus:outline-none focus:border-warning" name="tps" id="tps"
-                            required>
+                        <select class="select select-bordered focus:outline-none focus:border-warning" name="tps"
+                            id="tps" required>
                             <option disabled selected value=""> - Pilih TPS - </option>
                         </select>
                     </label>
@@ -117,17 +120,17 @@
                             <span class="label-text">Password</span>
                         </div>
 
-                        <input id="password" name="password" type="password"
-                             value="{{ $data->password }}"
+                        <input id="password" name="password" type="password" value="{{ $data->password }}"
                             class="input input-bordered focus:border-warning focus:outline-none w-full" required
                             autocomplete="password" />
-                            <div class="label">
-                                <span class="label-text text-red-500">*Password jagan di ubah jika tidak ingin di ubah (Password di Encrypt) !!</span>
-                            </div>
+                        <div class="label">
+                            <span class="label-text text-red-500">*Password jagan di ubah jika tidak ingin di ubah (Password
+                                di Encrypt) !!</span>
+                        </div>
                     </label>
 
                     <div class="flex space-x-2 justify-end pt-4">
-                        <a href="{{ route('users.index') }}" class="btn btn-sm  text-black">Kembali</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-sm text-black">Kembali</a>
                         <button type="submit" class="btn btn-sm btn-accent">Simpan</button>
                     </div>
 
@@ -144,54 +147,54 @@
 @endsection
 
 @push('addon-script')
-
-<script>
-    $(function() {
-    let kec = $('select[name="kecamatan"]').find(":selected").val();
-    let kelSelect = {!! json_encode($data->kelurahan) !!}
-    let tpsSelect = {!! json_encode($data->tps) !!}
-
+    <script>
+        $(function() {
+            let kec = $('select[name="kecamatan"]').find(":selected").val();
+            let kelSelect = {!! json_encode($data->kelurahan) !!}
+            let tpsSelect = {!! json_encode($data->tps) !!}
 
 
-        $.ajax({
-            url: "{!! route('districts') !!}",
-            type: 'GET',
-            data: {
-                id: kec
-            },
-            success: function(data) {
-                $('#kelurahan').empty();
-                $('#kelurahan').append('<option> - Pilih Kelurahan - </option>');
-                $.each(data, function(key, value) {
 
-                        $('#kelurahan').append('<option id="opt_kel" class="' + value.jml_tps + '" value="' + value
-                        .kode + ' ">' + value.nama +
-                        '</option>');
+            $.ajax({
+                url: "{!! route('districts') !!}",
+                type: 'GET',
+                data: {
+                    id: kec
+                },
+                success: function(data) {
+                    $('#kelurahan').empty();
+                    $('#kelurahan').append('<option> - Pilih Kelurahan - </option>');
+                    $.each(data, function(key, value) {
 
-                        $("select[name='kelurahan'] option").each(function(){
-                        if (value.kode == kelSelect)
-                            $(this).attr("selected","selected");
+                        $('#kelurahan').append('<option id="opt_kel" class="' + value.jml_tps +
+                            '" value="' + value
+                            .kode + ' ">' + value.nama +
+                            '</option>');
+
+                        $("select[name='kelurahan'] option").each(function() {
+                            if (value.kode == kelSelect)
+                                $(this).attr("selected", "selected");
                         });
 
                         for (let index = 1; index < value.jml_tps; index++) {
-                        $('#tps').append('<option id="opt_tps" value="' + index + '"> TPS ' + index +'</option>');
+                            $('#tps').append('<option id="opt_tps" value="' + index +
+                                '"> TPS ' + index + '</option>');
 
                         }
 
-                        
-                        if (value.jml_tps == tpsSelect){
-                            $("select[name='tps'] option").attr("selected","selected");
+
+                        if (value.jml_tps == tpsSelect) {
+                            $("select[name='tps'] option").attr("selected", "selected");
                         }
 
 
 
-                });
+                    });
 
-            }
-        });
+                }
+            });
 
 
-    })
-</script>
-
+        })
+    </script>
 @endpush

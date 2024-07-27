@@ -49,7 +49,6 @@ Route::prefix('author')
         Route::resource('/data-saksi', DataSaksiController::class);
         Route::resource('/users', UsersController::class);
         Route::get('/users-json', [UsersController::class, 'data'])->name('users.data');
-        // Route::get('/users/json', UsersController::class, 'data');
         Route::resource('/report', ReportController::class);
         Route::post('/import-users', [AppController::class, 'import'])->name('import.users');
         Route::post('/rekap-export', [AppController::class, 'export'])->name('export.rekap');
@@ -57,7 +56,9 @@ Route::prefix('author')
 
         //SAKSI
         Route::resource('/input-data-pilkada', InputDataPilkadaController::class);
+        Route::get('/dashboard/ubah-saksi-pilkada/{id}', [InputDataPilkadaController::class, 'edit'])->name('ubah-input-pilkada-saksi');
         Route::post('/save-pilkada', [InputDataPilkadaController::class, 'store'])->name('save-pilkada');
+        Route::patch('/update-pilkada/{id}', [InputDataPilkadaController::class, 'update'])->name('update-pilkada');
         Route::resource('/input-data-pilgub', InputDataPilgubController::class);
         Route::post('/save-pilgub', [InputDataPilgubController::class, 'store'])->name('save-pilgub');
 

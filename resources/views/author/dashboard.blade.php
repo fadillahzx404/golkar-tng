@@ -17,7 +17,8 @@
                         class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl   z-30">
 
                         <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Total Data Belum Di Verifikasi
-                            <span class="text-warning font-bold">(Kota Tangerang).</span></div>
+                            <span class="text-warning font-bold">(Kota Tangerang).</span>
+                        </div>
                         <div class="flex space-x-2 ">
                             <div class="stat-value ">312</div>
                             <div class="lg:place-content-end">Data</div>
@@ -103,9 +104,6 @@
                                     <td scope="row" class="py-4 text-center">{{ $uR->kelRelation->nama }}</td>
                                     <td scope="row" class="py-4 text-center">{{ $uR->kecRelation->nama }}</td>
                                     <td scope="row" class="py-4 text-center">
-
-
-
                                         <!-- Modal toggle -->
                                         <a data-modal-target="default-modal-{{ $uR->Id }}"
                                             data-modal-toggle="default-modal-{{ $uR->Id }}"
@@ -113,7 +111,6 @@
                                             type="button">
                                             Lihat Foto
                                         </a>
-
                                         <!-- Main modal -->
                                         <div id="default-modal-{{ $uR->Id }}" tabindex="-1" aria-hidden="true"
                                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -138,15 +135,10 @@
                                                         <img src="{{ asset("$uR->dokumen") }}" class=" border-2 rounded-xl"
                                                             alt="">
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                     </td>
-
                                     <td scope="row" class="py-4 text-center">
                                         <div
                                             class="badge @switch($uR->status)
@@ -163,12 +155,15 @@
                                             {{ Str::upper($uR->status) }}</div>
                                     </td>
                                     <td scope="row" class="p-4 text-end">
-
-
                                         <a href="{{ route('show-input-saksi', $uR->Id) }}"
-                                            class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg">
-                                            Detail<span></a>
-
+                                            class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-xs">
+                                            Detail</a>
+                                        @if ($uR->status == 'Not Verif')
+                                            <a href="{{ route('ubah-input-pilkada-saksi', $uR->Id) }}"
+                                                class="bg-success hover:bg-success text-black shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-xs"><i
+                                                    class="fa-solid fa-edit"></i>
+                                                Update</a>
+                                        @endif
 
                                     </td>
                                 </tr>
