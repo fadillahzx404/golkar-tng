@@ -35,6 +35,11 @@ class InputDataPilgubController extends Controller
      */
     public function store(Request $request)
     {
+        $rekap = Rekapitulasi::where('user', Auth::user()->nik)->get();
+        if ($rekap) {
+            return redirect('author/dashboard')->with('error', 'Access Denied')->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'kota' => 'required',
             'kecamatan' => 'required',
