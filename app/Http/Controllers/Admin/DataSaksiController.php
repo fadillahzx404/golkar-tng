@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
 use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class DataSaksiController extends Controller
 {
@@ -56,6 +58,7 @@ class DataSaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = Rekapitulasi::find($id)->with('kelRelation')->with('kecRelation')->with('userRelation')->first();
 
         Rekapitulasi::where('Id', $id)
             ->update([
@@ -64,7 +67,18 @@ class DataSaksiController extends Controller
             ]);
 
 
-        flash('Data Saksi Telah Ubah Verifikasinya !!');
+
+        if ($request->status != "Verif") {
+            $text = "*Admin Golkar*\n\nHallo *" . $data->userRelation->name . "* sebagai *" . $data->userRelation->roles . "*, Data anda tidak sinkron dengan foto, silakan di cek dan di update pada halaman dashboard setelah itu klik action dan update. Terima kasih.";
+
+            $url = "https://wa.me/" . $this->gantiformat($data->userRelation->phone_number) . "?text=" . urlencode($text);
+
+            return redirect()->to($url);
+        } else {
+            flash('Data Saksi Telah Ubah Verifikasinya !!');
+            $url = null;
+        }
+
         return redirect()
             ->route('data-saksi.index');
     }
@@ -75,5 +89,32 @@ class DataSaksiController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    function gantiformat($nomorhp)
+    {
+        //Terlebih dahulu kita trim dl
+        $nomorhp = trim($nomorhp);
+        //bersihkan dari karakter yang tidak perlu
+        $nomorhp = strip_tags($nomorhp);
+        // Berishkan dari spasi
+        $nomorhp = str_replace(" ", "", $nomorhp);
+        // bersihkan dari bentuk seperti  (022) 66677788
+        $nomorhp = str_replace("(", "", $nomorhp);
+        // bersihkan dari format yang ada titik seperti 0811.222.333.4
+        $nomorhp = str_replace(".", "", $nomorhp);
+
+        //cek apakah mengandung karakter + dan 0-9
+        if (!preg_match('/[^+0-9]/', trim($nomorhp))) {
+            // cek apakah no hp karakter 1-3 adalah +62
+            if (substr(trim($nomorhp), 0, 3) == '62') {
+                $nomorhp = trim($nomorhp);
+            }
+            // cek apakah no hp karakter 1 adalah 0
+            elseif (substr($nomorhp, 0, 1) == '0') {
+                $nomorhp = '62' . substr($nomorhp, 1);
+            }
+        }
+        return $nomorhp;
     }
 }
