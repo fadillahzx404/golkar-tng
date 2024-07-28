@@ -15,7 +15,7 @@ class DataSuaraController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = new Rekapitulasi();
+            // $data = new Rekapitulasi();
             $data = Rekapitulasi::where('status', 'Verif')->with(['kelRelation', 'kecRelation', 'userRelation'])->latest();
             return DataTables::of($data)
                 ->addColumn('nama', function ($data) {
@@ -30,9 +30,9 @@ class DataSuaraController extends Controller
                 ->addColumn('kecamatan', function ($data) {
                     return $data->kecRelation->nama;
                 })
-                // ->addColumn('photo', function ($data) {
-                //     return ($data->Id);
-                // })
+                ->addColumn('id', function ($data) {
+                    return [$data->Id, asset($data->dokumen)];
+                })
                 ->addColumn('status', function ($data) {
                     return '<div class="badge bg-accent p-3">' . strtoupper($data->status) . '</div>';
                 })
@@ -40,7 +40,7 @@ class DataSuaraController extends Controller
                     return '<a href="' . route('data-suara.show', $data->Id) . '"
                                         class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg"
                                         data-tip="Edit"> Detail<span></a>';
-                })->rawColumns(['status', 'action', 'photo'])->make(true);
+                })->rawColumns(['status', 'action'])->make(true);
         }
         return view('author.admin.data-suara.index', compact('request'));
     }

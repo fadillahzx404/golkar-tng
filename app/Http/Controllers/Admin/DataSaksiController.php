@@ -6,18 +6,53 @@ use App\Http\Controllers\Controller;
 use App\Models\Rekapitulasi;
 use Illuminate\Http\Request;
 use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Yajra\DataTables\Facades\DataTables;
 
 class DataSaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datas = Rekapitulasi::where('status', 'not yet verified')->with('kelRelation')->with('kecRelation')->get();
-        return view('author.admin.data-saksi.index', ['datas' => $datas]);
+        $datas = Rekapitulasi::with('kelRelation')->with('kecRelation')->with('userRelation');
+        $datas->where('status', 'not yet verified');
+        if (Auth::user()->roles == "ADMIN") {
+            $datas->where('kecamatan', Auth::user()->kecamatan);
+        }
+
+        if ($request->ajax()) {
+            // $data = new Rekapitulasi();
+            return DataTables::of($datas->latest())
+                ->addColumn('nama', function ($data) {
+                    return $data->userRelation->name;
+                })
+                ->addColumn('tps', function ($data) {
+                    return $data->tps;
+                })
+                ->addColumn('kelurahan', function ($data) {
+                    return $data->kelRelation->nama;
+                })
+                ->addColumn('kecamatan', function ($data) {
+                    return $data->kecRelation->nama;
+                })
+                ->addColumn('id', function ($data) {
+                    return [$data->Id, asset($data->dokumen)];
+                })
+                ->addColumn('status', function ($data) {
+                    return '<div class="badge bg-orange-400 p-3">' . strtoupper($data->status) . '</div>';
+                })
+                ->addColumn('action', function ($data) {
+                    return '<a href="' . route('data-saksi.edit', $data->Id) . '"
+                                        class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg"
+                                        data-tip="Edit"> Detail<span></a>';
+                })->rawColumns(['status', 'action'])->make(true);
+        }
+
+        return view('author.admin.data-saksi.index', compact('request'));
     }
 
     /**
@@ -50,6 +85,9 @@ class DataSaksiController extends Controller
     public function edit(string $id)
     {
         $datas = Rekapitulasi::with(['kelRelation', 'kecRelation', 'userRelation'])->findOrFail($id);
+        if (($datas->kecamatan != Auth::user()->kecamatan and Auth::user()->roles != "MASTER ADMIN") or $datas->status != 'not yet verified') {
+            return redirect('author/dashboard')->with('error', 'Access Denied')->withInput();
+        }
         return view('author.admin.data-saksi.edit', ['datas' => $datas]);
     }
 

@@ -156,7 +156,7 @@
                     </div>
                     <div class="place-self-end">
                         <button type="submit" class="btn btn-sm btn-accent">Simpan</button>
-                        <button type="submit" class="btn btn-sm btn-primary text-black">Kembali</button>
+                        <a href="{{ route('data-saksi.index') }}" class="btn btn-sm btn-primary text-black">Kembali</a>
                     </div>
                 </form>
 
