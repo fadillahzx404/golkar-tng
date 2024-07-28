@@ -11,7 +11,7 @@
                     </svg>
                 </label>
             </div>
-            <p class="font-bold px-5 text-gradient max-sm:hidden">Badan Saksi Nasional Golkar</p>
+            <p class="font-bold px-5 text-gradient max-sm:hidden">Badan Saksi Nasional Parta Golkar</p>
 
             @if (Route::has('login'))
                 <div class="flex space-x-3 lg:px-8">
@@ -31,13 +31,7 @@
                         </label>
                         <ul tabindex="0"
                             class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40">
-                            <li>
-                                <a href="/" class="hover:bg-warning hover:text-white">
-                                    Homepage
-                                </a>
-                            </li>
 
-                            </li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}"
                                     class="hover:bg-warning hover:text-white">

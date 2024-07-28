@@ -124,24 +124,28 @@
                 },
                 columns: [{
                         "render": function() {
-                            return i++;
+                            return '<div class="text-center">' + i++ + '</div>';
                         }
                     },
                     {
                         data: 'nama',
-                        name: 'nama'
+                        name: 'nama',
+                        className: 'dt-body-center'
                     },
                     {
                         data: 'tps',
-                        name: 'tps'
+                        name: 'tps',
+                        className: 'dt-body-center'
                     },
                     {
                         data: 'kelurahan',
-                        name: 'kelurahan'
+                        name: 'kelurahan',
+                        className: 'dt-body-center'
                     },
                     {
                         data: 'kecamatan',
-                        name: 'kecamatan'
+                        name: 'kecamatan',
+                        className: 'dt-body-center'
                     },
                     // {
                     //     data: 'photo',
@@ -154,11 +158,13 @@
                     // },
                     {
                         data: 'status',
-                        name: 'status'
+                        name: 'status',
+                        className: 'dt-body-center'
                     },
                     {
                         data: 'action',
-                        name: 'action'
+                        name: 'action',
+                        className: 'dt-body-right'
                     },
                 ]
             })

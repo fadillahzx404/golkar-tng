@@ -61,7 +61,6 @@
                     {{ __('Login as Admin Golkar') }}
                 </a>
                 <div class="flex items-center">
-                    <a href="/register" class="ms-4 btn btn-sm rounded-md">Daftar</a>
 
                     <x-button class="ms-4 bg-warning">
                         {{ __('Masuk') }}

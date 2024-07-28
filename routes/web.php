@@ -28,8 +28,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('auth.login');
+});
+
+
+//VIP
+Route::get('/vip', function () {
     return view('welcome');
 });
+
+
 
 Route::get('districts', [AppController::class, 'districts'])->name('districts');
 

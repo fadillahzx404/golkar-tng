@@ -24,12 +24,7 @@
             <a href="" class="font-bold">
                 Home
             </a>
-            <a href="" class="font-bold">
-                Struktur
-            </a>
-            <a href="" class="font-bold">
-                About
-            </a>
+
             <p class="max-sm:hidden">© 2023 Copyright: Golkar.id</p>
         </div>
     </div>

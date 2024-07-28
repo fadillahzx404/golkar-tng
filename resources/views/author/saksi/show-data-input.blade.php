@@ -8,13 +8,13 @@
     <div class="container lg:px-12  pt-12 lg:mt-8 max-lg:px-10 max-sm:px-5 mx-auto min-h-screen w-full overflow-auto">
 
 
-        <div class="flex gap-4 pb-3">
-            <p class="text-3xl font-bold underline underline-offset-8">Data Saksi {{ $data->userRelation->name }}</p>
+        <div class="flex pb-3 lg:gap-4 max-sm:justify-between">
+            <p class="text-3xl font-bold underline underline-offset-8">Data Saksi </p>
             <a href="{{ route('dashboard') }}" class="p-3 btn btn-info"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div>
         <section class="section lg:py-8">
 
-            <div class="relative overflow-x-auto shadow-lg border   bg-white border-gray-200 sm:rounded-lg p-5">
+            <div class="relative overflow-x-auto shadow-lg border bg-white border-gray-200 rounded-lg p-5">
                 <div class="title-table grid">
                     <div class="flex justify-between">
                         <div class="grid w-full">
@@ -47,7 +47,8 @@
 
                 </div>
 
-                <div class="flex justify-between border rounde-lg p-4   ">
+                <div
+                    class="lg:flex max-sm:grid max-sm:justify-center max-sm:space-y-2 lg:justify-between border rounde-lg p-4   ">
 
                     <div class="title-kel text-center">
                         <p class="text-lg">Kecamatan</p>
@@ -103,8 +104,8 @@
                     </div>
                 </div>
 
-                <div class="grid space-y-4 p-3 pt-8 text-2xl">
-                    <div class="grid grid-cols-4 ">
+                <div class="grid space-y-4 p-3 pt-8 lg:text-2xl">
+                    <div class="grid grid-cols-4">
                         <div class="col-span-1">NIK</div>
                         <div class="col-span-3">: {{ $data->user }}</div>
                     </div>
@@ -122,16 +123,16 @@
                         <div class="col-span-3">: {{ $data->sah }}</div>
                     </div>
                 </div>
-                <div class="border text-2xl p-4">
+                <div class="border lg:text-2xl p-4">
                     <p class="pb-4 font-bold">Suara Masing-Masing Paslon</p>
                     <div class="grid space-y-4">
-                        <div class="grid grid-cols-4 ">
-                            <div class="col-span-1">H Sachrudin</div>
-                            <div class="col-span-3">: {{ $data->paslon1 }}</div>
+                        <div class="grid grid-cols-5 ">
+                            <div class="col-span-3">Paslon1</div>
+                            <div class="col-span-2">: {{ $data->paslon1 }}</div>
                         </div>
-                        <div class="grid grid-cols-4 ">
-                            <div class="col-span-1">Paslon2</div>
-                            <div class="col-span-3">: {{ $data->paslon2 }}</div>
+                        <div class="grid grid-cols-5 ">
+                            <div class="col-span-3">Paslon2</div>
+                            <div class="col-span-2">: {{ $data->paslon2 }}</div>
                         </div>
                     </div>
 

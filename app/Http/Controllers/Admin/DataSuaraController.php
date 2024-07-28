@@ -38,8 +38,8 @@ class DataSuaraController extends Controller
                 })
                 ->addColumn('action', function ($data) {
                     return '<a href="' . route('data-suara.show', $data->Id) . '"
-                                        class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg"
-                                        data-tip="Edit"> Detail<span></a>';
+                                        class="bg-white hover:bg-primary shadow-xl py-2 px-4 rounded-md border-2"
+                                        > Detail <i class="fa fa-arrow-right"></i><span></a>';
                 })->rawColumns(['status', 'action', 'photo'])->make(true);
         }
         return view('author.admin.data-suara.index', compact('request'));

@@ -1,14 +1,14 @@
 <script src=" https://kit.fontawesome.com/d3336582c4.js" crossorigin="anonymous"></script>
 
-<script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <!--Datatables -->
 <script src="https://cdn.datatables.net/2.1.2/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
@@ -22,9 +22,10 @@
     $(document).ready(function() {
 
         var table = $('#datatable').DataTable({
-                responsive: true,
+                responsive: true
             })
-            .columns.adjust();
+            .columns.adjust()
+            .responsive.recalc();
 
 
 
@@ -79,7 +80,8 @@
                 $('#' + name).append('<option> - Pilih Kelurahan - </option>');
                 $.each(data, function(key, value) {
 
-                    $('#' + name).append('<option id="opt_kel" class="' + value.jml_tps + '" value="' + value
+                    $('#' + name).append('<option id="opt_kel" class="' + value.jml_tps +
+                        '" value="' + value
                         .kode + '">' + value.nama +
                         '</option>');
 

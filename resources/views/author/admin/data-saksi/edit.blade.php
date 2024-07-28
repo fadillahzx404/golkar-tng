@@ -134,14 +134,14 @@
                             <div class="flex space-x-4">
                                 <span class="place-content-center">:</span>
                                 <div class="form-control">
-                                    <label class="label cursor-pointer  space-x-4">
+                                    <label class="label cursor-pointer gap-3">
                                         <input type="radio" name="status" value="Not Verif"
                                             class="radio radio-error checked:bg-red-500" />
                                         <span class="label-text">Not Verif</span>
                                     </label>
                                 </div>
                                 <div class="form-control">
-                                    <label class="label cursor-pointer  space-x-4">
+                                    <label class="label cursor-pointer gap-3">
                                         <input type="radio" name="status" value="Verif"
                                             class="radio radio-accent  checked:bg-green-500" checked="checked" />
                                         <span class="label-text">Verif</span>
@@ -154,9 +154,9 @@
                         </div>
 
                     </div>
-                    <div class="place-self-end">
+                    <div class="text-end pt-4">
+                        <a href="{{ route('data-saksi.index') }}" class="btn btn-sm btn-primary text-black">Kembali</a>
                         <button type="submit" class="btn btn-sm btn-accent">Simpan</button>
-                        <button type="submit" class="btn btn-sm btn-primary text-black">Kembali</button>
                     </div>
                 </form>
 

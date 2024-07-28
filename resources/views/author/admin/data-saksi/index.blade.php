@@ -131,7 +131,7 @@
                                 <td scope="row" class="p-4  text-end min-w-44">
                                     <a href="{{ route('data-saksi.edit', $data->Id) }}"
                                         class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-lg"
-                                        data-tip="Edit"> Detail<span></a>
+                                        > Detail<span></a>
 
 
                                 </td>

@@ -94,7 +94,7 @@
                 <div
                     class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahan</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">TPS</div>
                     <div class="flex space-x-2 ">
                         <div class="stat-value ">312</div>
                         <div class="lg:place-content-end">Data</div>
@@ -108,7 +108,7 @@
                 <div
                     class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kecamatan</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kelurahan</div>
                     <div class="flex space-x-2 ">
                         <div class="stat-value ">312</div>
                         <div class="place-content-end">Data</div>
@@ -122,9 +122,9 @@
                 <div
                     class="bg-base-100 max-sm:place-items-center relative stat shadow-sm shadow-warning rounded-xl w-72 max-sm:h-36 z-30">
 
-                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kota/Kabupaten</div>
+                    <div class="stat-title lg:pb-3 max-sm:text-2xl text-lg text-black">Kecamatan</div>
                     <div class="flex space-x-2 ">
-                        <div class="stat-value ">312</div>
+                        <div class="stat-value" id="count_tps"></div>
                         <div class="place-content-end">Data</div>
                     </div>
 
@@ -137,7 +137,7 @@
 
         </section>
 
-        <section class="content-3 flex flex-col bg-primary mt-16">
+        {{-- <section class="content-3 flex flex-col bg-primary mt-16">
             <p class="p-4 -mt-8 w-48 bg-warning mx-8 rounded-md text-xl text-white font-bold">Pilkada</p>
 
             <div
@@ -201,9 +201,9 @@
                 </div>
 
             </div>
-        </section>
+        </section> --}}
 
-        <section class="content-4 flex flex-col bg-primary mt-16">
+        {{-- <section class="content-4 flex flex-col bg-primary mt-16">
             <p class="p-4 -mt-8 w-48 bg-warning mx-8 rounded-md text-xl text-white font-bold text-end self-end">Pilgub</p>
 
             <div
@@ -267,7 +267,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> --}}
 
 
 
@@ -277,7 +277,7 @@
 @endsection
 
 @push('addon-script')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
 
             const getChartOptions = () => {
@@ -714,5 +714,16 @@
             }
 
         })
+    </script> --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        // Send a POST request
+        axios({
+            method: 'post',
+            url: '/rekapitulasi-tps',
+            data: data,
+        });
     </script>
 @endpush
