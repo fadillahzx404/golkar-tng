@@ -57,8 +57,10 @@ Route::prefix('author')
         //SAKSI
         Route::resource('/input-data-pilkada', InputDataPilkadaController::class);
         Route::get('/dashboard/ubah-saksi-pilkada/{id}', [InputDataPilkadaController::class, 'edit'])->name('ubah-input-pilkada-saksi');
+        Route::get('/dashboard/ubah-saksi-pilgub/{id}', [InputDataPilgubController::class, 'edit'])->name('ubah-input-pilgub-saksi');
         Route::post('/save-pilkada', [InputDataPilkadaController::class, 'store'])->name('save-pilkada');
         Route::patch('/update-pilkada/{id}', [InputDataPilkadaController::class, 'update'])->name('update-pilkada');
+        Route::patch('/update-pilgub/{id}', [InputDataPilgubController::class, 'update'])->name('update-pilgub');
         Route::resource('/input-data-pilgub', InputDataPilgubController::class);
         Route::post('/save-pilgub', [InputDataPilgubController::class, 'store'])->name('save-pilgub');
 

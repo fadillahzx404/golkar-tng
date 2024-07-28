@@ -159,10 +159,17 @@
                                             class="bg-white hover:bg-primary shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-xs">
                                             Detail</a>
                                         @if ($uR->status == 'Not Verif')
-                                            <a href="{{ route('ubah-input-pilkada-saksi', $uR->Id) }}"
-                                                class="bg-success hover:bg-success text-black shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-xs"><i
-                                                    class="fa-solid fa-edit"></i>
-                                                Update</a>
+                                            @if ($uR->jenis == 'pilkada')
+                                                <a href="{{ route('ubah-input-pilkada-saksi', $uR->Id) }}"
+                                                    class="bg-success hover:bg-success text-black shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-xs"><i
+                                                        class="fa-solid fa-edit"></i>
+                                                    Update</a>
+                                            @else
+                                                <a href="{{ route('ubah-input-pilgub-saksi', $uR->Id) }}"
+                                                    class="bg-success hover:bg-success text-black shadow-lg py-2 px-4 rounded-md shadow-primary border-2 text-xs"><i
+                                                        class="fa-solid fa-edit"></i>
+                                                    Update</a>
+                                            @endif
                                         @endif
 
                                     </td>

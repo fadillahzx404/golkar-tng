@@ -36,8 +36,8 @@ class InputDataPilgubController extends Controller
     public function store(Request $request)
     {
         $rekap = Rekapitulasi::where('user', Auth::user()->nik)->get();
-        if ($rekap) {
-            return redirect('author/dashboard')->with('error', 'Access Denied')->withInput();
+        if (count($rekap) > 0) {
+            return redirect('author/dashboard')->with('error', 'Access Denied');
         }
 
         $validator = Validator::make($request->all(), [
@@ -98,7 +98,13 @@ class InputDataPilgubController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kecamatan = DB::table('t_kecamatan')->where('kode', Auth::user()->kecamatan)->get();
+        $kelurahan = DB::table('t_kelurahan')->where('kode', Auth::user()->kelurahan)->get();
+        $data = Rekapitulasi::findOrFail($id);
+        if ($data->user != Auth::user()->nik or $data->status == 'Verif') {
+            return redirect('author/dashboard')->with('error', 'Access Denied')->withInput();
+        }
+        return view('author.saksi.input-data-pilgub.ubah', ['data' => $data, 'kecamatan' => $kecamatan, 'kelurahan' => $kelurahan]);
     }
 
     /**
@@ -106,7 +112,50 @@ class InputDataPilgubController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Rekapitulasi::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'kota' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'tps' => 'required',
+            'paslon1' => 'required|numeric',
+            'paslon2' => 'required|numeric',
+            'file' => 'mimes:png,jpg,jpeg',
+            'dpt' => 'required|numeric',
+            'sah' => 'required|numeric',
+            'tidak_sah' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors())->with('error', 'Periksa kembali data anda!')->withInput();
+        }
+
+        if ($request->hasFile('file')) {
+            // delete image
+            if (file_exists($data->dokumen)) {
+                @unlink($data->dokumen);
+            }
+
+            $file = $request->file('file');
+
+            $file_name = $file->hashName();
+            $path = 'public/images/pilgub/';
+            $file->move($path, $file_name);
+            Rekapitulasi::where("Id", $id)->update(['dokumen' => $path . $file_name]);
+        }
+
+        Rekapitulasi::where('Id', $id)->update([
+            'paslon1' => $request->paslon1,
+            'paslon2' => $request->paslon2,
+            'status' => 'not yet verified',
+            'dpt' => $request->dpt,
+            'sah' => $request->sah,
+            'tidak_sah' => $request->tidak_sah,
+        ]);
+
+        flash('Input Data Pilgub Berhasil Diubah !');
+        return  redirect()->route('dashboard');
     }
 
     /**
