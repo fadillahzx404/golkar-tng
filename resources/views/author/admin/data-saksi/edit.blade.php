@@ -157,6 +157,10 @@
                     <div class="text-end pt-4">
                         <a href="{{ route('data-saksi.index') }}" class="btn btn-sm btn-primary text-black">Kembali</a>
                         <button type="submit" class="btn btn-sm btn-accent">Simpan</button>
+<<<<<<< HEAD
+=======
+                        <a href="{{ route('data-saksi.index') }}" class="btn btn-sm btn-primary text-black">Kembali</a>
+>>>>>>> 8d6b14cd86880871aa796ec6de195c68386ba268
                     </div>
                 </form>
 

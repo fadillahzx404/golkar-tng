@@ -80,39 +80,14 @@
             </div>
         </section>
     </div>
-
-    <div id="default-modal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-5xl max-h-full">
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        C1 Photo
-                    </h3>
-                    <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="default-modal">
-                        X
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <div class="p-4 md:p-5 space-y-4">
-                    <img src="" class=" border-2 rounded-xl" alt="" id="image-c1">
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('addon-script')
     <script>
         $(document).ready(function() {
-            loadData();
-        });
-
-        function loadData() {
+            // loadData();
             var i = 1;
-            $('#serverside').DataTable({
+            var table = $('#serverside').DataTable({
                 processing: true,
                 pagination: true,
                 responsive: true,
@@ -148,12 +123,26 @@
                         className: 'dt-body-center'
                     },
                     // {
-                    //     data: 'photo',
-                    //     name: 'photo',
+                    //     data: 'id',
+                    //     name: 'id',
                     //     render: function(data, type, full, meta) {
-                    //         // console.log(data);
-                    //         return '<a href="#" class="text-black bg-warning hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onclick="showImage()">Lihat Foto</a>';
-                    //         // return '<a href="#" onclick="showImage(\'' + data + '\')">View Image</a>';
+                    //         var img = data[1]
+                    //         var buttonModal =
+                    //             '<a data-modal-target="default-modal-' + data[0] +
+                    //             '" data-modal-toggle="default-modal-' +
+                    //             data[0] +
+                    //             '" class="text-black bg-warning hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700" type="button">Lihat Foto</a>'
+                    //         var modal =
+                    //             '<div id="default-modal-' + data[0] +
+                    //             '" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">' +
+                    //             '<div class="relative p-4 w-full max-w-5xl max-h-full"><div class="relative bg-white rounded-lg shadow dark:bg-gray-700">' +
+                    //             '<div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">' +
+                    //             '<h3 class="text-xl font-semibold text-gray-900 dark:text-white">C1 Photo</h3><button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal-' +
+                    //             data[0] +
+                    //             '">X<span class="sr-only">Close modal</span></button></div><div class="p-4 md:p-5 space-y-4"><img src="' +
+                    //             img +
+                    //             '" class="border-2 rounded-xl" alt="C1"></div></div></div></div>';
+                    //         return buttonModal + modal
                     //     }
                     // },
                     {
@@ -168,6 +157,10 @@
                     },
                 ]
             })
-        }
+        });
+
+        // function loadData() {
+
+        // }
     </script>
 @endpush
